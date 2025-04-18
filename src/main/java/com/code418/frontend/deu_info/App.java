@@ -1,12 +1,19 @@
 package com.code418.frontend.deu_info;
 
+import java.io.BufferedReader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.web.WebView;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
+import java.net.URL;
 
 /**
  * JavaFX App
@@ -16,10 +23,26 @@ public class App extends Application {
     private static Scene scene;
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+    public void start(Stage stage) {
+        WebView webView = new WebView();
+
+        // resources/static/index.html 경로를 URL로 불러오기
+        URL url = getClass().getResource("/static/index.html");
+
+        if (url != null) {
+            // 외부 리소스를 제대로 불러오게 하려면 loadContent 대신 load 사용
+            webView.getEngine().load(url.toExternalForm());
+        } else {
+            System.out.println("index.html 파일을 찾을 수 없습니다.");
+        }
+
+        Scene scene = new Scene(webView, 800, 600);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 
     static void setRoot(String fxml) throws IOException {
@@ -30,9 +53,4 @@ public class App extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
 }
