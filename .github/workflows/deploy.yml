@@ -28,10 +28,10 @@ jobs:
         working-directory: vite-react
         run: yarn build
 
-      - name: Commit and push any changes to main (if needed)
+      - name: Commit and push any changes to main
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "INMD1"
+          git config user.email "lyw514549@gmail.com"
           git add .
           git diff --quiet && echo "No changes to commit." || git commit -m "🤖 Update main branch files via CI"
           git push origin main
