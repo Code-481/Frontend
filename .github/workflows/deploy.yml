@@ -21,11 +21,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies with Yarn
-        working-directory: vite-react-app
+        working-directory: vite-react
         run: yarn install 
 
       - name: Build Vite React App
-        working-directory: vite-react-app
+        working-directory: vite-react
         run: yarn build
 
       - name: Commit and push any changes to main (if needed)
@@ -41,5 +41,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: build
-          publish_dir: vite-react-app/dist
+          publish_dir: vite-react/dist
           force_orphan: true
