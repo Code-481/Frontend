@@ -1,0 +1,36 @@
+name: Build and Deploy Vite-React with Yarn
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # 배포를 위해 권한 분리
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies (Yarn)
+        run: yarn install --frozen-lockfile
+
+      - name: Build (Vite)
+        run: yarn build
+
+      - name: Deploy to Build branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: Build           # 배포 브랜치명 (필요시 변경)
+          folder: dist               # Vite 빌드 산출물 폴더
+          clean: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
