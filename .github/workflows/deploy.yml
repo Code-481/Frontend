@@ -25,11 +25,11 @@ jobs:
 
       - name: Install dependencies with Yarn
         working-directory: vite-react
-        run: yarn install 
+        run: npm install 
 
       - name: Build Vite React App
         working-directory: vite-react
-        run: yarn build
+        run: npm build
 
       - name: Commit and push any changes to main (if needed)
         run: |
