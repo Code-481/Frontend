@@ -22,7 +22,7 @@ public class App extends Application {
         WebView webView = new WebView();
 
         // resources/static/index.html 경로를 URL로 불러오기
-        URL url = getClass().getResource("/static/index.html");
+        URL url = getClass().getResource("/static/Frontend/index.html");
 
         if (url != null) {
             // 외부 리소스를 제대로 불러오게 하려면 loadContent 대신 load 사용

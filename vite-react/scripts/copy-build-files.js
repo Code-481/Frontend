@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 // dist 폴더와 site 폴더 경로 설정
 const buildDir = path.join(__dirname, '..', 'dist');
-const siteDir = path.join(__dirname, '../../src/main/resources/', 'static');
+const siteDir = path.join(__dirname, '../../src/main/resources/static', 'Frontend');
 
 // dist 폴더의 내용을 site 폴더로 복사
 fs.copy(buildDir, siteDir, (err) => {
