@@ -40,6 +40,7 @@ public class App extends Application {
         launch(args);
     }
 
+    // fxml로 디자인을 한 파일을 로드하기 위한 파일
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
