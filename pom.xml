@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.code418.frontend</groupId>
     <artifactId>deu_info</artifactId>
@@ -24,6 +25,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-web</artifactId>
             <version>21.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.net.httpserver</groupId>
+            <artifactId>http</artifactId>
+            <version>20070405</version>
         </dependency>
     </dependencies>
     <build>
@@ -55,7 +61,8 @@
                         <id>debug</id>
                         <configuration>
                             <options>
-                                <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000</option>
+                                <option>
+                                    -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=localhost:8000</option>
                             </options>
                         </configuration>
                     </execution>
@@ -64,7 +71,8 @@
                         <id>ide-debug</id>
                         <configuration>
                             <options>
-                                <option>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</option>
+                                <option>
+                                    -agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</option>
                             </options>
                         </configuration>
                     </execution>

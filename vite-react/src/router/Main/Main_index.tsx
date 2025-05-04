@@ -42,7 +42,7 @@ function Main_index() {
         {/**버튼 */}
         <div className="grid gap-y-2 pb-5 text-sm 2xl:text-mg">
           <Button className="">한눈에 보기</Button>
-          <Button className="">학식 보기</Button>
+          <Button className="">학식/기숙사 식단 보기</Button>
           <Button className="">버스맵 이동</Button>
         </div>
         <div className="separator">DEU BUS INFO</div>
