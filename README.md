@@ -4,9 +4,18 @@
 > 개인적으로 빌드를 원하시는 경우 파일에서 `Build-File`에 있는 <br/>
 > Readme를 참고해주세요.
 
+## 사용하는 기술
+[내부작업]<br/>
+React + Tailwind + Shadcn <br/>
+[외부작업]<br/>
+Java + JavaFX
+
 # 작동방식
 ## 개발후 깃 업로드 
-![image](https://github.com/user-attachments/assets/bf43e3ea-98d6-460d-80c8-1ce919acb7c2)
+
+<details><summary>접기/펼치기</summary>
+
+![image](https://github.com/user-attachments/assets/bf43e3ea-98d6-460d-80c8-1ce919acb7c2)  
 ## 1. 개발자 영역
 ###  NetBeans
 - → Java(Javalin) 기반 서버 코드를 작성하고
@@ -38,11 +47,13 @@
 - → 리버스 프록시 기능을 수행하고
 - → 외부 클라이언트의 요청을 Javalin 컨테이너로 연결하며
 - → HTTPS 및 포트 관리도 지원합니다
-
+</details>
+  
 ## 프로그램 실행전후 과정
+
+<details><summary>접기/펼치기</summary>
+
 ![image](https://github.com/user-attachments/assets/274a5029-76d2-4575-91a0-b5802e897eba)
-
-
 ## Repo 동기화 및 상태 확인
 - GitHub 리포지토리의 빌드 브랜치를 주기적으로 모니터링하여 Java 프로그램의 빌드 상태를 체크
 - 새로운 변경 사항이 감지되면 최신 빌드 결과물을 로컬 리소스 폴더에 저장
@@ -61,9 +72,5 @@
 ### JavaFX
 - → Java 고유 UI 컴포넌트로 구성된 화면 표시
 - → 필요에 따라 WebView와 상호 전환 또는 연동하여 사용
+</details>
 
-## 사용하는 기술
-### UI
-
-내부작업: React + Tailwind + Shadcn <br/>
-외부작업: Java + JavaFX
