@@ -26,15 +26,15 @@ java ^
 ```
 jpackage ^
   --type exe ^
-  --input . ^
-  --dest installer ^
-  --name deu_info ^
+  --input E:\Code-481\Frontend\Build-File ^
+  --dest E:\Code-481\Frontend\Build-File\installer ^
   --main-jar deu_info-0.0.1.jar ^
   --main-class com.code418.frontend.deu_info.App ^
-  --module-path "E:\Code-481\Frontend\Build-File\lib\javafx-sdk-21.0.7\lib" ^
+  --name "DeuInfoApp" ^
+  --module-path "E:\Code-481\Frontend\Build-File\lib\javafx-jmods-21.0.7_win" ^
   --add-modules javafx.controls,javafx.fxml,javafx.web ^
-  --java-options "--add-opens=java.base/java.lang=ALL-UNNAMED" ^
-  --win-shortcut
+  --win-shortcut ^
+  --win-menu
 ```
 
 ## Linux(Ubuntu/Debian)
