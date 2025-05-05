@@ -1,5 +1,10 @@
 package com.code418.frontend.deu_info;
 
+/**
+ *
+ * @author INMD1
+ */
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -8,10 +13,6 @@ import javafx.scene.web.WebEngine;
 import java.io.File;
 import javafx.application.Platform;
 
-/**
- *
- * @author INMD1
- */
 public class App extends Application {
 
     private final alret_message alret = new alret_message();

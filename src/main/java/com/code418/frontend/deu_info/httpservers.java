@@ -1,5 +1,10 @@
 package com.code418.frontend.deu_info;
 
+/**
+ *
+ * @author INMD1
+ */
+
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
@@ -9,10 +14,6 @@ import java.net.InetSocketAddress;
 import java.nio.file.Files;
 import javafx.application.Platform;
 
-/**
- *
- * @author INMD1
- */
 public class httpservers {
 
     private final String buildpath;

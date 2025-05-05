@@ -1,14 +1,15 @@
 package com.code418.frontend.deu_info;
 
+/**
+ *
+ * @author INMD1
+ */
+
 import java.util.Optional;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-/**
- *
- * @author INMD1
- */
 public class alret_message {
 
     public void error(String headertext, String contenttext) {
