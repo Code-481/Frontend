@@ -5,6 +5,8 @@
 # 바로 실행
 
 ## Windwos
+> 아래 링크을 통해 다운 받은후 Build-File\lib에 넣어주세요. <br/>
+>https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_windows-x64_bin-sdk.zip <br/>
 ```
 java ^
   --module-path <파일주소>\Frontend\Build-File\lib\javafx-sdk-21.0.7\lib ^
@@ -14,6 +16,9 @@ java ^
 ```
 
 ## Linux
+> 아래 링크을 통해 다운 받은후 Build-File\lib에 넣어주세요. <br/>
+> https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_linux-x64_bin-sdk.zip<br/>
+
 ```
 java ^
   --module-path = <파일주소>/Frontend/Build-File/lib/javafx-sdk-21.0.7/lib ^
@@ -31,23 +36,25 @@ java ^
 > 버전을 바꾼경우 혼선을 방지하기 위해 이전 버전을 제거해주세요.
 
 ## Windwos
-
+> 아래 링크을 통해 다운 받은후 Build-File\lib에 넣어주세요. <br/>
+> https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_windows-x64_bin-jmods.zip<br/>
 ```
 jpackage ^
   --type exe ^
-  --input E:\Code-481\Frontend\Build-File\ ^
+  --input <파일주소>\Frontend\Build-File\ ^
   --dest E:\Code-481\Frontend\Build-File\installer ^
   --main-jar deu_info-0.0.1.jar ^
   --main-class com.code418.frontend.deu_info.App ^
   --name "DeuInfoApp" ^
-  --module-path "E:\Code-481\Frontend\Build-File\lib\javafx-jmods-21.0.7_win" ^
+  --module-path "<파일주소>\Frontend\Build-File\lib\javafx-jmods-21.0.7" ^
   --add-modules javafx.controls,javafx.fxml,javafx.web ^
   --win-shortcut ^
   --win-menu
 ```
 
 ## Linux(Ubuntu/Debian) (작성중)
-
+> 아래 링크을 통해 다운 받은후 Build-File\lib에 넣어주세요. <br/>
+> https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_linux-x64_bin-jmods.zip<br/>
 ```bash
 
 ```
