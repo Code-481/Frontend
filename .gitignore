@@ -2,3 +2,5 @@ target/
 Build-File/Frontend
 Build-File/installer
 Build-File/deu_info-0.0.1.jar
+Build-File/runtime
+Build-File/lib
