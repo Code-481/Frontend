@@ -58,22 +58,3 @@ jpackage.exe ^
 ```bash
 
 ```
-
-# 실행했을때 인증서 오류가 뜨는경우 (해결중)
-
-## Windows
-
-2개의 파일을 다운 받은후 <br/>
-https://www.digicert.com/CACerts/DigiCertGlobalRootCA.crt <br/>
-https://www.digicert.com/CACerts/DigiCertGlobalRootG2.crt <br/>
-
-`C:\Program Files\Java\jdk-17\lib\security`에 복사 <br/>
-cmd에서 관리자권한 얻고 아래 코드 실행
-
-```
-"C:\Program Files\Java\jdk-17\bin\keytool.exe" -importcert ^
-  -alias github-root ^
-  -file "C:\Program Files\Java\jdk-17\lib\security\DigiCertGlobalRootCA.crt" ^
-  -keystore "C:\Program Files\Java\jdk-17\lib\security\cacerts" ^
-  -storepass changeit
-```
