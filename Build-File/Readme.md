@@ -16,14 +16,13 @@ java ^
 ```
 
 ## Linux
-> 아래 링크을 통해 다운 받은후 Build-File\lib에 넣어주세요. <br/>
-> https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_linux-x64_bin-sdk.zip<br/>
+> `sudo apt-get install openjfx`을 해서 패키지를 설치해주세요 <br/>
 
 ```
-java ^
-  --module-path = <파일주소>/Frontend/Build-File/lib/javafx-sdk-21.0.7/lib ^
-  --add-modules javafx.controls,javafx.fxml,javafx.web ^
-  -cp "deu_info-0.0.1.jar; <파일주소>/Code-481/Frontend/Build-File/lib/jgit/*" ^
+java \
+  --module-path /usr/share/openjfx/lib \
+  --add-modules javafx.controls,javafx.fxml,javafx.web \
+  -cp "deu_info-0.0.1.jar:lib/jgit/*:lib/slf4j/*:lib/jsch/*" \
   com.code418.frontend.deu_info.App
 ```
 
