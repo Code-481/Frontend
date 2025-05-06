@@ -20,9 +20,15 @@ java ^
 
 ```
 java \
+<<<<<<< HEAD
   --module-path /usr/share/openjfx/lib \
+=======
+  -Dfile.encoding=UTF-8 \
+  --module-path lib/javafx-sdk-21.0.7/lib \
+>>>>>>> 5227f54 (리눅스를 위한 패키지 설치 및 리드 수정)
   --add-modules javafx.controls,javafx.fxml,javafx.web \
   -cp "deu_info-0.0.1.jar:lib/jgit/*:lib/slf4j/*:lib/jsch/*" \
   com.code418.frontend.deu_info.App
-```
 
+```
+#  윈도우 패키징 하기

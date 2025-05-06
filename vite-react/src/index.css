@@ -3,12 +3,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
-* {
-  font-family: "Noto Sans KR", sans-serif;
+@font-face {
+  font-family: "NotoSansKR";
+  font-weight: normal;
+  src: url("./assets/fonts/NotoSansKR-VariableFont_wghtr.ttf") format("truetype");
 }
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif, NotoSansKR;
   line-height: 1.5;
   font-weight: 400;
 

@@ -10,7 +10,13 @@ React + Tailwind + Shadcn <br/>
 [외부작업]<br/>
 Java + JavaFX
 
-# 작동방식
+# 실행하기
+### Windows
+릴리즈에서 설치 파일 만들어서 다운 받아주세요.
+
+### Linux (debian/Ubuntu)
+(작성중)
+
 ## 개발후 깃 업로드 
 
 <details><summary>접기/펼치기</summary>

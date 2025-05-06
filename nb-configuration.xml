@@ -8,7 +8,9 @@ Without this configuration present, some functionality in the IDE may be limited
 -->
     <config-data xmlns="http://www.netbeans.org/ns/maven-config-data/1">
         <configurations>
-            <configuration id="javafx" profiles=""/>
+            <configuration id="javafx" profiles="">
+                <property name="J-Dfile.encoding">UTF-8 -J-locale=UTF-8</property>
+            </configuration>
         </configurations>
     </config-data>
 </project-shared-configuration>

@@ -4,7 +4,6 @@ package com.code418.frontend.deu_info;
  *
  * @author INMD1
  */
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -12,6 +11,7 @@ import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import java.io.File;
 import javafx.application.Platform;
+import javafx.scene.text.Font;
 
 public class App extends Application {
 
@@ -19,8 +19,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
+        Font.loadFont(getClass().getResourceAsStream("/fonts/NanumGothic.ttf"), 14);
         try {
-
             // WebView 
             WebView webView = new WebView();
             WebEngine engine = webView.getEngine();
@@ -37,7 +37,7 @@ public class App extends Application {
                 // Git
                 gitPull git = new gitPull();
                 git.start();
-                
+
                 System.out.println("[로그] 데이터 최신화 작업종료");
                 //위 작업이 되면 실행
                 Platform.runLater(() -> {
