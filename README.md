@@ -19,6 +19,7 @@ Java + JavaFX
 ### Linux (debian/Ubuntu)
 릴리즈에서 설치 파일 만들어서 다운 받아주세요.
 
+# 개발후 로직
 ## 개발후 깃 업로드 
 
 <details><summary>접기/펼치기</summary>
