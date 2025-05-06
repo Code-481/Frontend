@@ -2,54 +2,17 @@
 
 이 문서는 Code418 프로젝트의 Frontend 빌드 및 실행 방법을 안내합니다. 개발자를 위한 가이드입니다.
 
-
-# 📦 바로 실행
-
-### Windows
-
-1. 아래 링크에서 JavaFX SDK를 다운로드하고, 압축을 해제한 후 `Frontend/Build-File/lib` 폴더에 넣어주세요.  
-   👉 [openjfx-21.0.7_windows-x64_bin-sdk.zip](https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_windows-x64_bin-sdk.zip)
-
-2. 아래 명령어로 실행하세요:
-
-   ```cmd
-    java ^
-      --module-path <파일경로>\Frontend\Build-File\lib\javafx-sdk-21.0.7\lib ^
-      --add-modules javafx.controls,javafx.fxml,javafx.web ^
-      -cp "deu_info-0.0.1.jar;<파일경로>\Frontend\Build-File\lib\jgit\*" ^
-      com.code418.frontend.deu_info.App
-    ```
-    
-### Linux
-
-1. 아래 링크에서 JavaFX SDK를 다운로드하고, 압축을 해제한 후 `Frontend/Build-File/lib` 폴더에 넣어주세요.
-   
-   👉 [openjfx-21.0.7\_linux-x64\_bin-sdk.zip](https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_linux-x64_bin-sdk.zip)
-
-2. 아래 명령어로 실행하세요:
-
-   ```bash
-    java \
-      -Dfile.encoding=UTF-8 \
-      --module-path lib/javafx-sdk-21.0.7/lib \
-      --add-modules javafx.controls,javafx.fxml,javafx.web \
-      -cp "deu_info-0.0.1.jar:lib/jgit/*:lib/slf4j/*:lib/jsch/*" \
-      com.code418.frontend.deu_info.App
-   ```
-
-
 ## 📦 패키징
 
 ### Windows 패키징
 
-> 아래 링크에서 JavaFX JMODs 파일을 다운로드하여 `Build-File/lib` 폴더에 넣어주세요.
-> 👉 [openjfx-21.0.7\_windows-x64\_bin-jmods.zip](https://download2.gluonhq.com/openjfx/21.0.7/openjfx-21.0.7_windows-x64_bin-jmods.zip)
+ 1. launch4j을 설치를 한다.
+ 2. launch4j을 실행후 example_win_packaging.xml 파일을 열어서 참고해서 exe 패키징한다.
+ 3. 패키징후 정상적으로 작동하는지 테스트한다.
+  
+> 설치 프로그램을 만들고 싶으면 innosetup 프로그램을 이용해서 설치 패키지를 만드세요.
 
-> ⚠️ (작성 중 – 자세한 패키징 명령은 추후 추가 예정)
-
----
-
-### Linux 패키징 (DEB)
+### Linux 패키징 (DEB) -> 작성중
 
 #### 1. 디렉토리 구조 생성
 

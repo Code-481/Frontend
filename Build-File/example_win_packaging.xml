@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>E:\Code-481\Frontend\Build-File\deu-info.jar</jar>
+  <outfile>E:\Code-481\Frontend\Build-File\deuinfo.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>idle</priority>
+  <downloadUrl></downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>true</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <classPath>
+    <mainClass>com.code418.frontend.deu_info.App</mainClass>
+    <cp>deu_info-0.0.1.jar;lib/jgit/*;lib/slf4j/*;lib/jsch/*</cp>
+  </classPath>
+  <jre>
+    <path>%JAVA_HOME%;%PATH%</path>
+    <requiresJdk>true</requiresJdk>
+    <requires64Bit>true</requires64Bit>
+    <minVersion>17</minVersion>
+    <maxVersion></maxVersion>
+    <opt>--module-path &quot;%EXEDIR%\lib\javafx-sdk-21.0.7\lib&quot;</opt>
+    <opt>--add-modules javafx.controls,javafx.fxml,javafx.web</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>0.0.0.1</fileVersion>
+    <txtFileVersion>0.0.1.Beta1</txtFileVersion>
+    <fileDescription>Developer compiled version</fileDescription>
+    <copyright>deu-java-Code418</copyright>
+    <productVersion>0.0.0.1</productVersion>
+    <txtProductVersion>0.0.1.Beta1</txtProductVersion>
+    <productName>Deu-info</productName>
+    <companyName>test</companyName>
+    <internalName>Deu-info_LTS</internalName>
+    <originalFilename>Deu-info_LTS.exe</originalFilename>
+    <trademarks>test</trademarks>
+    <language>KOREAN</language>
+  </versionInfo>
+</launch4jConfig>
