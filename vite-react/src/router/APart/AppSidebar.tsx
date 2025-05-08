@@ -54,7 +54,7 @@ export function AppSidebar() {
     <Sidebar className="pr-10">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xl font-bold">Menu</SidebarGroupLabel>
+          <SidebarGroupLabel className=" pb-2 text-xl font-bold">Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="pl-5 gap-2.5">
               {Menuitems.map((item) => (
@@ -70,7 +70,7 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
           <br />
-          <SidebarGroupLabel className="text-xl font-bold">Bus Info</SidebarGroupLabel>
+          <SidebarGroupLabel className="pb-2  text-xl font-bold">Bus Info</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="pl-5  gap-2.5">
               {Bus_Info.map((item) => (

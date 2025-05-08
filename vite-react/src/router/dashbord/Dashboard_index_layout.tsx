@@ -1,13 +1,13 @@
-import { AppSidebar } from "./part/AppSidebar";
-import Topnav from "./part/Topnav";
+import { AppSidebar } from "../APart/AppSidebar";
+import Topnav from "../APart/Topnav";
 import { SidebarProvider } from "@/components/ui/sidebar"
 
 
 function Dashboard_index_layout() {
     return (
-        <div className="grid">
+        <div className="w-screen  grid">
             <Topnav />
-            <div className=" w-screen  flex">
+            <div className=" flex">
                 {/* Side */}
                 <div className="">
                     <SidebarProvider>

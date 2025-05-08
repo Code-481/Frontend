@@ -1,5 +1,5 @@
 
-import deulogo from "../../../assets/image/logo-symbol-01.png";
+import deulogo from "../../assets/image/logo-symbol-01.png";
 
 function Topnav() {
     return (
