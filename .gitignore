@@ -5,5 +5,5 @@ Build-File/runtime
 Build-File/example_win_installer.iss
 Build-File/deuinfo.exe
 Build-File/deu-info.jar
-Build-File/lib/javafx-*
+Build-File/lib/javafx-sdk-21.0.7
 Frontend/
