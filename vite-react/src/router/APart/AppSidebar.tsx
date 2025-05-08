@@ -19,7 +19,7 @@ const Menuitems = [
     icon: Info,
   },
   {
-    title: "Inbox",
+    title: "학식/기숙사 식당",
     url: "#",
     icon: Utensils,
   }
