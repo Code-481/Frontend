@@ -59,7 +59,7 @@ const BusStatusCard = () => (
             <CardTitle className="text-2xl font-bold">각 버스별 위치</CardTitle>
         </CardHeader>
         <CardContent className="space-y-8">
-            {busData.map((bus, idx) => (
+            {busData.map((bus) => (
                 <div key={bus.title}>
                     <div className="flex items-center gap-2 mb-1">
                         <span className="font-bold text-lg">{bus.title}</span>
