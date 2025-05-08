@@ -2,8 +2,17 @@ import { Button } from "@/components/ui/button";
 import deubackground from "../../assets/image/deu-background.png";
 import deulogo from "../../assets/image/deu-logo.png";
 import { FaBusSimple } from "react-icons/fa6";
+import { useNavigate } from "react-router";
 
 function Main_index() {
+
+  const navigate = useNavigate();
+
+  const navigateToDashboard = () => {
+    navigate("/dashboard");
+  };
+
+
   return (
     <div className="flex h-screen w-screen">
       {/* 미Action 구역 */}
@@ -41,7 +50,7 @@ function Main_index() {
         </div>
         {/**버튼 */}
         <div className="grid gap-y-2 pb-5 text-sm 2xl:text-mg">
-          <Button className="">한눈에 보기</Button>
+          <Button onClick={navigateToDashboard} className="">한눈에 보기</Button>
           <Button className="">학식/기숙사 식단 보기</Button>
           <Button className="">버스맵 이동</Button>
         </div>
@@ -60,7 +69,7 @@ function Main_index() {
             진구 9번
           </Button>
           <Button variant="ghost" className="text-lg">
-            <FaBusSimple color="#2096F3"/>
+            <FaBusSimple color="#2096F3" />
             110-1번
           </Button>
         </div>
