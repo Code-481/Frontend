@@ -4,4 +4,5 @@ Build-File/installer
 Build-File/runtime
 Build-File/example_win_installer.iss
 Build-File/deuinfo.exe
+Build-File/deu-info.jar
 Frontend/
