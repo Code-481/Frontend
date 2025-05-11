@@ -155,7 +155,7 @@ export default function BusRoutesCard({ routes }) {
                     <div
                       key={busIndex}
                       className="flex flex-col items-center absolute w-full"
-                      style={{ bottom: `${60 + verticalOffset}px` }}
+                      style={{ bottom: `${30 + verticalOffset}px` }}
                     >
                       <div
                         className={`text-md ${
@@ -222,9 +222,9 @@ export default function BusRoutesCard({ routes }) {
       ) : (
         <div className="">
           {routes.map((route, index) => (
-            <div className="pt-10">
+            <div className="pt-5">
               <div key={index}>
-                <div className="text-2xl font-semibold pb-10">
+                <div className="text-2xl font-semibold pb-15">
                   {route.title}
                 </div>
                 {renderDesktopView(route)}
