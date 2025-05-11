@@ -7,3 +7,4 @@ Build-File/deuinfo.exe
 Build-File/deu-info.jar
 Build-File/lib/javafx-sdk-21.0.7
 Frontend/
+vite-react/.npmrc
