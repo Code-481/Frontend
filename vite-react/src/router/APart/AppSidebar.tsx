@@ -51,42 +51,45 @@ const Bus_Info = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="pr-10">
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className=" pb-2 text-xl font-bold">Menu</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu className="pl-5 gap-2.5">
-              {Menuitems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span className="text-lg">{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-          <br />
-          <SidebarGroupLabel className="pb-2  text-xl font-bold">Bus Info</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu className="pl-5  gap-2.5">
-              {Bus_Info.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span className="text-lg">{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </Sidebar>
+    <>
+      <br />
+      <Sidebar className="pr-10">
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupLabel className=" pb-2 text-xl font-bold">Menu</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu className="pl-5 gap-2.5">
+                {Menuitems.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <a href={item.url}>
+                        <item.icon />
+                        <span className="text-lg">{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+            <br />
+            <SidebarGroupLabel className="pb-2  text-xl font-bold">Bus Info</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu className="pl-5  gap-2.5">
+                {Bus_Info.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <a href={item.url}>
+                        <item.icon />
+                        <span className="text-lg">{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+      </Sidebar>
+    </>
   )
 }

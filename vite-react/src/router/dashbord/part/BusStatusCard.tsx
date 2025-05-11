@@ -1,51 +1,64 @@
-// components/BusRoutesCard.tsx
 import { Card } from "@/components/ui/card"
 import { Bus } from "lucide-react"
+import React from "react"
 
-type Stop = {
-    name: string
-    current?: boolean
-}
-
-type Route = {
-    title: string
-    message: string
-    color: string // Tailwind bg color (e.g. 'bg-violet-500')
-    stops: Stop[]
-}
-
-export default function BusRoutesCard({ routes }: { routes: Route[] }) {
+//@ts-ignore
+export default function BusRoutesCard({ routes }) {
     return (
         <Card className="shadow-md rounded-2xl p-6">
-            <p className="text-2xl font-bold">각 버스별 위치</p>
+            <p className="text-3xl font-bold">각 버스별 위치</p>
+            {/**@ts-ignore */}
             {routes.map((route, index) => (
-                <div key={index}>
-                    <div className="text-lg font-semibold mb-1">{route.title}</div>
+                <div key={index} className="mb-2">
+                    <div className="text-xl font-semibold ">{route.title}</div>
                     <div className="text-sm text-muted-foreground pb-1">{route.message}</div>
-                    <div className="flex items-center justify-between relative overflow-x-auto">
-                        {route.stops.map((stop, i) => (
-                            <div key={i} className="flex flex-col items-center relative min-w-20">
-                                {/* 현재 위치 아이콘 */}
-                                {stop.current && <Bus className="text-gray-700 w-5 h-5 mb-1 " />}
-                                {/* 정류장 원형 */}
-                                <div
-                                    className={`w-4 h-4 rounded-full ${route.color} ${stop.current ? "border-2 border-black" : ""
-                                        }`}
-                                />
-                                <div className="text-xs mt-1 whitespace-nowrap">{stop.name}</div>
-                                {/* 선 연결 */}
-                                {i < route.stops.length - 1 && (
-                                    <div
-                                        className={`absolute top-2 left-1/2 h-1 w-full -z-10 ${route.color
-                                            }`}
-                                        style={{ width: "100%", height: 2, top: 10 }}
-                                    />
-                                )}
-                            </div>
-                        ))}
+                    <div className="flex flex-wrap items-center gap-x-4">
+                        {/**@ts-ignore */}
+                        {route.stops.map((stop, i) => {
+                            const isSoon = stop.eta !== undefined && stop.eta <= 2;
+                            const isApproaching = stop.eta !== undefined && stop.eta > 2;
+
+                            return (
+                                <React.Fragment key={i}>
+                                    {/* 각 정류장 */}
+                                    <div className="flex flex-col items-center relative w-16">
+                                        {/* ETA <= 2일 때: 원 위 */}
+                                        {isSoon && (
+                                            <>
+                                                <div className="text-md text-red-600 -mb-1">{stop.eta}분</div>
+                                                <Bus className="text-gray-700 w-10 h-10 mb-1" />
+                                            </>
+                                        )}
+
+                                        {/* 원형 정류장 */}
+                                        <div
+                                            className={`w-1 h-1 rounded-full ${route.color} ${isSoon ? "border-2 border-black" : ""}`}
+                                        />
+                                        <div className="text-sm mt-1 whitespace-nowrap text-center font-bold">{stop.name}</div>
+                                    </div>
+
+                                    {/* stop과 stop 사이의 선 + ETA > 2 표시 */}
+                                    {i < route.stops.length - 1 && (
+                                        <div className="relative flex items-center" style={{ width: 30, height: 20 }}>
+                                            {/* 선 */}
+                                            <div className={`h-1 w-full ${route.color}`} />
+
+                                            {/* ETA > 2일 때 선 위에 버스와 시간 */}
+                                            {isApproaching && (
+                                                <div className="absolute -top-12 -right-4 -translate-x-1/2 flex flex-col items-center">
+                                                    <div className="text-md text-gray-600">{stop.eta}분</div>
+                                                    <Bus className="text-gray-700 w-8 h-8" />
+                                                </div>
+                                            )}
+                                        </div>
+                                    )}
+                                </React.Fragment>
+                            );
+                        })}
+
                     </div>
                 </div>
             ))}
         </Card>
-    )
+    );
 }
