@@ -7,46 +7,38 @@ import Food_Card from "./part/Food_Card";
 function Dashboard_index_layout() {
   const bus_example = [
     {
-      title: "부산진구 6-1 번",
+      title: "부산진구 6 번",
       message: "운행중",
-      color: "bg-[#0B3D91]",
       stops: [
-        { name: "동의대역" },
-        { name: "수정터널" },
-        { name: "반도아파트" },
-        { name: "동의대\n입구 ", eta: 1, direction: "right" }, // 오른쪽 방향으로 이동 중
-        { name: "자연대학" },
-        { name: "중앙\n도서관" },
+        { name: "동의대\n입구", eta: 2, routeDirection: "left" },
+        { name: "자연대학", eta: 2, routeDirection: "right" },
+        { name: "도서관" },
         { name: "본관" },
       ],
     },
     {
-      title: "부산진구 6번",
+      title: "부산진구 6-1번",
       message: "운행중",
-      color: "bg-[#0B3D91]",
       stops: [
-        { name: "본관", eta: 5 },
-        { name: "도서관" },
-        { name: "자연대학" },
-        { name: "동의대\n입구", eta: 2, direction: "left" }, // 왼쪽 방향으로 이동 중 (회차 후)
-        { name: "수정터널" },
-        { name: "동의대역" },
-        { name: "가야1\n치안센터" },
+        { name: "동의대\n입구", eta: 5, routeDirection: "left" },
+        { name: "도서관", eta: 3, routeDirection: "left" },
+        { name: "자연대학", eta: 6, routeDirection: "left" },
+        { name: "본관" },
       ],
     },
     {
       title: "부산진구 9번",
       message: "운행중",
-      color: "bg-green-500",
       stops: [
+        { name: "동의대\n입구", eta: 2, routeDirection: "right" },
         { name: "본관" },
         { name: "자연대학" },
-        { name: "동의대\n입구", eta: 5 }, // 방향 없음 (기본 버스 아이콘)
-        { name: "가야1\n치안센터" },
-        { name: "동의대역" },
-        { name: "개금역" },
-        { name: "주례한효아파트" },
       ],
+    },
+    {
+      title: "110-1번",
+      message: "운행중",
+      stops: [],
     },
   ];
 

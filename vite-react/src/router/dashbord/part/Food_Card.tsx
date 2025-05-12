@@ -73,7 +73,7 @@ function Food_Card() {
   console.log(data);
 
   return (
-    <div className="min-w-[25vw]">
+    <div className="w-[290px]">
       <Card>
         <div className="pr-3 pl-3 p-6">
           <p className="text-3xl font-bold pb-4">오늘 대학 식단</p>
