@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -14,7 +14,7 @@ function Food_Card() {
       .then((res) => {
         for (let index = 0; index < res.data.meals.length; index++) {
           if (res.data.meals[index].date == dayjs().format("YYYY-MM-DD")) {
-             //@ts-ignore
+            //@ts-ignore
             function convertMenuData(data) {
               const result = [];
 
@@ -73,86 +73,121 @@ function Food_Card() {
   console.log(data);
 
   return (
-    <div className="w-[290px]">
+    <div className="w-[30vw] lg:w-[34vw]">
       <Card>
         <div className="pr-3 pl-3 p-6">
-          <p className="text-3xl font-bold pb-4">오늘 대학 식단</p>
-
-          <Card className="p-4">
-            <div className="">
-              <CardTitle className="text-lg">
+          <p className="text-3xl font-bold pb-3">오늘 대학 식단</p>
+          <div className="grid gap-y-3">
+            <div className="flex gap-x-6">
+              <Card className="p-4 w-[10vw] lg:w-[16vw]">
+                <div className="">
+                  <CardTitle className="text-lg">
                     {/*@ts-ignore*/}
                     {data[0]?.corner == undefined ? "데이터를 가져오는중" : data[0]?.corner}
-              </CardTitle>
-              <CardDescription className="text-md">
+                  </CardTitle>
+                  <CardDescription className="text-md">
                     {/*@ts-ignore*/}
                     {data[0]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[0]?.menus[0].name}
-              </CardDescription>
-            </div>
-            <div className="">
-              <CardTitle className="text-lg">
+                  </CardDescription>
+                </div>
+                <div className="">
+                  <CardTitle className="text-lg">
                     {/*@ts-ignore*/}
                     {data[1]?.corner == undefined ? "데이터를 가져오는중" : data[1]?.corner}
-              </CardTitle>
-              <CardDescription className="text-md">
+                  </CardTitle>
+                  <CardDescription className="text-md">
                     {/*@ts-ignore*/}
                     {data[1]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[1]?.menus[0].name}
-              </CardDescription>
+                  </CardDescription>
+                </div>
+                <div>
+                  <CardTitle className="text-lg">
+                    {/*@ts-ignore*/}
+                    {data[2]?.corner == undefined ? "데이터를 가져오는중" : data[2]?.corner}
+                  </CardTitle>
+                  <CardDescription className="text-md">
+                    {/*@ts-ignore*/}
+                    {data[2]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[2]?.menus[0].name}
+                  </CardDescription>
+                </div>
+              </Card>
+              <Card className="p-4  w-[10vw] lg:w-[13vw]">
+                <div className="">
+                  <CardTitle className="text-lg">
+                    {/*@ts-ignore*/}
+                    {data[3]?.corner == undefined ? "데이터를 가져오는중" : data[3]?.corner}
+                  </CardTitle>
+                  <CardDescription className="text-md">
+                    {/*@ts-ignore*/}
+                    {data[3]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[3]?.menus[0].name}
+                  </CardDescription>
+                </div>
+                <div className="">
+                  <CardTitle className="text-lg">
+                    {/*@ts-ignore*/}
+                    {data[4]?.corner == undefined ? "데이터를 가져오는중" : data[4]?.corner}
+                  </CardTitle>
+                  <CardDescription className="text-md">
+                    {/*@ts-ignore*/}
+                    {data[4]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[4]?.menus[0].name}
+                  </CardDescription>
+                </div>
+                <div className="">
+                  <CardTitle className="text-lg">
+                    {/*@ts-ignore*/}
+                    {data[5]?.corner == undefined ? "데이터를 가져오는중" : data[5]?.corner}
+                  </CardTitle>
+                  <CardDescription className="text-md">
+                    {/*@ts-ignore*/}
+                    {data[5]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[5]?.menus[0].name}
+                  </CardDescription>
+                </div>
+                <div className="">
+                  <CardTitle className="text-lg">
+                    {/*@ts-ignore*/}
+                    {data[6]?.corner == undefined ? "데이터를 가져오는중" : data[6]?.corner}
+                  </CardTitle>
+                  <CardDescription className="text-md">
+                    {/*@ts-ignore*/}
+                    {data[6]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[6]?.menus[0].name}
+                  </CardDescription>
+                </div>
+              </Card>
             </div>
             <div>
+              <Card className="p-4">
                 <CardTitle className="text-lg">
-                        {/*@ts-ignore*/}
-                        {data[2]?.corner == undefined ? "데이터를 가져오는중" : data[2]?.corner}
+                  수덕전 골든벨 (커피류)
                 </CardTitle>
-                <CardDescription className="text-md">
-                        {/*@ts-ignore*/}
-                        {data[2]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[2]?.menus[0].name}
-                </CardDescription>
+                <CardContent className="pl-2">
+                  <table >
+                    <tbody >
+                      <tr>
+                        <td>골드브루: 2000원</td>
+                        <td>ㅤㅤ</td>
+                        <td>바닐라라떼: 3000원</td>
+                      </tr>
+                      <tr>
+                        <td>더치커피: 2000원</td>
+                        <td></td>
+                        <td>카페모카: 3000원</td>
+                      </tr>
+                      <tr>
+                        <td>카페라떼: 2500원</td>
+                        <td></td>
+                        <td>카라메멜 마끼아또: 3000원</td>
+                      </tr>
+                      <tr>
+                        <td>카푸치노: 2500원</td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </CardContent>
+              </Card>
             </div>
-          </Card>
-          <div className="h-3"></div>
-          <Card className="p-4">
-            <div className="">
-                <CardTitle className="text-lg">
-                        {/*@ts-ignore*/}
-                        {data[3]?.corner == undefined ? "데이터를 가져오는중" : data[3]?.corner}
-                </CardTitle>
-                <CardDescription className="text-md">
-                        {/*@ts-ignore*/}
-                        {data[3]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[3]?.menus[0].name}
-                </CardDescription>
-            </div>
-            <div className="">
-                <CardTitle className="text-lg">
-                        {/*@ts-ignore*/}
-                        {data[4]?.corner == undefined ? "데이터를 가져오는중" : data[4]?.corner}
-                </CardTitle>
-                <CardDescription className="text-md">
-                        {/*@ts-ignore*/}
-                        {data[4]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[4]?.menus[0].name}
-                </CardDescription>
-            </div>
-            <div className="">
-                <CardTitle className="text-lg">
-                        {/*@ts-ignore*/}
-                        {data[5]?.corner == undefined ? "데이터를 가져오는중" : data[5]?.corner}
-                </CardTitle>
-                <CardDescription className="text-md">
-                        {/*@ts-ignore*/}
-                        {data[5]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[5]?.menus[0].name}
-                </CardDescription>
-            </div>
-            <div className="">
-                <CardTitle className="text-lg">
-                        {/*@ts-ignore*/}
-                        {data[6]?.corner == undefined ? "데이터를 가져오는중" : data[6]?.corner}
-                </CardTitle>
-                <CardDescription className="text-md">
-                        {/*@ts-ignore*/}
-                        {data[6]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[6]?.menus[0].name}
-                </CardDescription>
-            </div>
-          </Card>
+          </div>
         </div>
       </Card>
     </div>

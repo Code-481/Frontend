@@ -3,9 +3,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
-body {
+
+@media (min-width: 1200px) {
+  body {
   overflow: hidden;   
+  }
 }
+
+@media (max-width: 1024px){
+	  body {
+    }
+}
+
+
+
 
 @layer base {
   :root {

@@ -77,9 +77,9 @@ export default function BusRoutesCard({ routes }) {
           <tbody>
             {processedStops.map((stop, i) => {
               // 2분 이내 도착 버스 필터링
-              const soonBuses = stop.buses.filter((bus) => bus.eta <= 2);
+              const soonBuses = stop.buses.filter((bus) => bus.eta <= 1);
               // 2분 초과 도착 버스 필터링
-              const approachingBuses = stop.buses.filter((bus) => bus.eta > 2);
+              const approachingBuses = stop.buses.filter((bus) => bus.eta > 1);
 
               return (
                 <tr key={i} className="border-b">
@@ -103,13 +103,12 @@ export default function BusRoutesCard({ routes }) {
                     {soonBuses.length === 1 && (
                       <div className="flex items-center">
                         <Bus
-                          className={`${
-                            soonBuses[0].direction === "left"
+                          className={`${soonBuses[0].direction === "left"
                               ? "text-orange-500"
                               : soonBuses[0].direction === "right"
-                              ? "text-blue-600"
-                              : "text-red-600"
-                          } w-6 h-6 mr-2`}
+                                ? "text-blue-600"
+                                : "text-red-600"
+                            } w-6 h-6 mr-2`}
                           style={
                             soonBuses[0].direction === "left"
                               ? { transform: "scaleX(-1)" }
@@ -117,13 +116,12 @@ export default function BusRoutesCard({ routes }) {
                           }
                         />
                         <span
-                          className={`font-bold ${
-                            soonBuses[0].direction === "left"
+                          className={`font-bold ${soonBuses[0].direction === "left"
                               ? "text-orange-500"
                               : soonBuses[0].direction === "right"
-                              ? "text-blue-600"
-                              : "text-red-600"
-                          }`}
+                                ? "text-blue-600"
+                                : "text-red-600"
+                            }`}
                         >
                           곧 도착
                         </span>
@@ -134,13 +132,12 @@ export default function BusRoutesCard({ routes }) {
                     {approachingBuses.map((bus, busIndex) => (
                       <div key={busIndex} className="flex items-center mt-2">
                         <Bus
-                          className={`${
-                            bus.direction === "left"
+                          className={`${bus.direction === "left"
                               ? "text-orange-500"
                               : bus.direction === "right"
-                              ? "text-blue-600"
-                              : "text-red-600"
-                          } w-6 h-6 mr-2`}
+                                ? "text-blue-600"
+                                : "text-red-600"
+                            } w-6 h-6 mr-2`}
                           style={
                             bus.direction === "left"
                               ? { transform: "scaleX(-1)" }
@@ -148,13 +145,12 @@ export default function BusRoutesCard({ routes }) {
                           }
                         />
                         <span
-                          className={`${
-                            bus.direction === "left"
+                          className={`${bus.direction === "left"
                               ? "text-orange-500"
                               : bus.direction === "right"
-                              ? "text-blue-600"
-                              : "text-red-600"
-                          }`}
+                                ? "text-blue-600"
+                                : "text-red-600"
+                            }`}
                         >
                           {bus.eta}분
                         </span>
@@ -221,27 +217,25 @@ export default function BusRoutesCard({ routes }) {
 
                   {/* 2분 이내 도착 버스가 한 대인 경우 해당 방향으로 표시 */}
                   {soonBuses.length === 1 && (
-                    <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 min-w-[80px]">
+                    <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 min-w-[90px]">
                       <div className="flex flex-col items-center">
                         <span
-                          className={`font-bold ${
-                            soonBuses[0].direction === "left"
+                          className={`font-bold ${soonBuses[0].direction === "left"
                               ? "text-orange-500"
                               : soonBuses[0].direction === "right"
-                              ? "text-blue-600"
-                              : "text-red-600"
-                          }`}
+                                ? "text-blue-600"
+                                : "text-red-600"
+                            }`}
                         >
                           곧 도착
                         </span>
                         <Bus
-                          className={`${
-                            soonBuses[0].direction === "left"
+                          className={`${soonBuses[0].direction === "left"
                               ? "text-orange-500"
                               : soonBuses[0].direction === "right"
-                              ? "text-blue-600"
-                              : "text-red-600"
-                          } w-8 h-8`}
+                                ? "text-blue-600"
+                                : "text-red-600"
+                            } w-8 h-8`}
                           style={
                             soonBuses[0].direction === "left"
                               ? { transform: "scaleX(-1)" }
@@ -255,7 +249,7 @@ export default function BusRoutesCard({ routes }) {
 
                 {/* 정류장 사이 선 */}
                 {i < processedStops.length - 1 && (
-                  <div className="relative mx-2 w-[53px] 2xl:w-[60px]">
+                  <div className="relative mx-2 w-[53px] 2xl:w-[90px]">
                     <div
                       className={`h-1 ${lineColor}`}
                       style={{ width: "100%" }}
@@ -268,8 +262,8 @@ export default function BusRoutesCard({ routes }) {
                         bus.direction === "left"
                           ? "left-2/6"
                           : bus.direction === "right"
-                          ? "left-4/5"
-                          : "left-1/2"; // 기본 위치는 중앙
+                            ? "left-4/5"
+                            : "left-1/2"; // 기본 위치는 중앙
 
                       return (
                         <div
@@ -278,24 +272,22 @@ export default function BusRoutesCard({ routes }) {
                         >
                           <div className="flex flex-col items-center">
                             <span
-                              className={`font-bold ${
-                                bus.direction === "left"
+                              className={`font-bold ${bus.direction === "left"
                                   ? "text-orange-500"
                                   : bus.direction === "right"
-                                  ? "text-blue-600"
-                                  : "text-red-600"
-                              }`}
+                                    ? "text-blue-600"
+                                    : "text-red-600"
+                                } w-10`}
                             >
-                              {bus.eta}분
+                              {bus.eta} 분
                             </span>
                             <Bus
-                              className={`${
-                                bus.direction === "left"
+                              className={`${bus.direction === "left"
                                   ? "text-orange-500"
                                   : bus.direction === "right"
-                                  ? "text-blue-600"
-                                  : "text-red-600"
-                              } w-8 h-8`}
+                                    ? "text-blue-600"
+                                    : "text-red-600"
+                                } w-8 h-8`}
                               style={
                                 bus.direction === "left"
                                   ? { transform: "scaleX(-1)" }
@@ -354,11 +346,11 @@ export default function BusRoutesCard({ routes }) {
 
       {isMobile ? (
         // 모바일 뷰 - 노선을 세로로 표시
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 xl:grid-cols-3 gap-4">
           {routes.map((route, index) => (
             <div key={index} className="mb-6">
-              <div className="text-xl font-semibold pb-3">
-                {route.title} 노선
+              <div className="text font-semibold pb-3">
+                {route.title}
               </div>
               {renderMobileView(route)}
             </div>
