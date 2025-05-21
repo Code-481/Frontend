@@ -53,7 +53,7 @@ export function AppSidebar() {
   return (
     <>
       <br />
-      <Sidebar className="pr-10">
+      <Sidebar className="pr-4">
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel className=" pb-2 text-xl font-bold">Menu</SidebarGroupLabel>

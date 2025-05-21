@@ -6,17 +6,27 @@
 
 @media (min-width: 1200px) {
   body {
-  overflow: hidden;   
+  overflow-y: hidden;   
   }
+
 }
 
-@media (max-width: 1024px){
+@media (max-width: 1269px){
 	  body {
     }
 }
 
-
-
+.lg\:grid-cols-3 {
+    @media (width >= 65rem /* 1024px */) {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+::-webkit-scrollbar {
+    display: block;
+}
+::-webkit-scrollbar-track, ::-webkit-scrollbar-button {
+    display: none;
+}
 
 @layer base {
   :root {

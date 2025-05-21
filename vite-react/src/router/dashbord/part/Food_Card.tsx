@@ -73,13 +73,13 @@ function Food_Card() {
   console.log(data);
 
   return (
-    <div className="w-[30vw] lg:w-[34vw]">
-      <Card>
-        <div className="pr-3 pl-3 p-6">
+    <div className="w-full lg:w-[31vw]">
+      <Card className="h-[46vh] xl:h-[auto] md:overflow-y-auto">
+        <div className="p-4">
           <p className="text-3xl font-bold pb-3">오늘 대학 식단</p>
           <div className="grid gap-y-3">
             <div className="flex gap-x-6">
-              <Card className="p-4 w-[10vw] lg:w-[16vw]">
+              <Card className="p-4 w-[10vw] lg:w-[13vw]">
                 <div className="">
                   <CardTitle className="text-lg">
                     {/*@ts-ignore*/}
@@ -159,7 +159,7 @@ function Food_Card() {
                 <CardTitle className="text-lg">
                   수덕전 골든벨 (커피류)
                 </CardTitle>
-                <CardContent className="pl-2">
+                <CardContent className="pl-4">
                   <table >
                     <tbody >
                       <tr>
