@@ -6,19 +6,22 @@ import Food_Card from "./part/Food_Card";
 import { useEffect, useState } from "react";
 import All_Bus from "@/Api/Bus/Bus_arrival.ts";
 import Festival from "./part/Festival";
-import Weather_Card from "./part/Weather_Card";
+
 import ResponsiveWeatherCard from "./part/weather/WeatherWidgetCard";
 const dummyWeather = {
   temperature: 34,
   sunsetTime: "6:30 pm",
   location: "Shirdi Sai Nagar",
-  cloud: 2,
-  sky: 0,
+  cloud: 1,
+  sky: 2,
   weekly: [
     { date: "2025-05-19", minTemperature: 23, maxTemperature: 36, sky: 0, cloud: 2 },
     { date: "2025-05-20", minTemperature: 23, maxTemperature: 36, sky: 0, cloud: 2 },
     { date: "2025-05-21", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
     { date: "2025-05-22", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
+    { date: "2025-05-23", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
+    { date: "2025-05-24", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
+
   ],
 };
 const json = [
@@ -98,8 +101,10 @@ const json = [
 ];
 
 function Dashboard_index_layout() {
+  //@ts-ignore
   const [weather, setWeather] = useState(dummyWeather);
   const [busData, setBusData] = useState(json);
+  //@ts-ignore
   const [loading, setLoading] = useState(false);
 
   async function main() {
@@ -133,9 +138,9 @@ function Dashboard_index_layout() {
   return (
     <>
       <Topnav />
-      <div className="flex w-screen h-screen">
+      <div className="flex w-screen h-screen overflow-auto">
         {/* Side */}
-        {false ? (
+        {true ? (
           <div>
             <SidebarProvider>
               <AppSidebar />
@@ -144,7 +149,7 @@ function Dashboard_index_layout() {
         ) : null}
         {/* content */}
         <div className={false ? "grid" : "grid flex-grow w-full"}>
-          <div className=" p-5">
+          <div className=" p-5 bg-white">
             <p className="text-4xl font-bold">DEU 캠퍼스 인포</p>
             <p className="text-2xl text-gray-500">
               여러분이 궁금해하는 정보, 한눈에 확인해보세요
@@ -162,7 +167,7 @@ function Dashboard_index_layout() {
             <div className="flex">
               {/*  부산 행사  */}
               <div className="hidden xl:grid w-3/5 pr-10">
-                <div className="pt-5">
+                <div className="pt-3">
                   <p className="text-3xl font-bold">Busan is Festival!</p>
                   <p className="text-md text-gray-500">
                     부산에서 진행하는 행사를 알아 보세요!

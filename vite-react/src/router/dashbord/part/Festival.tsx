@@ -9,7 +9,7 @@ import {
 
 function Festival() {
     return <>
-        <div className="flex gap-x-4 h-[100%] overflow-x-scroll ">
+        <div className="flex gap-x-4 h-[25vh] overflow-x-scroll ">
             <Card className="w-[60%] p-5">
                 <CardHeader>
                     <CardTitle>Card Title</CardTitle>
