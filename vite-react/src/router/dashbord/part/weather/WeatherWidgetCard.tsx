@@ -34,11 +34,12 @@ export default function ResponsiveWeatherCard({
       className={`
         w-[39vw] 
         h-[30vh] 
-        md:h-[28vh] 
+        md:h-[20vh] 
         lg:h-[26vh] 
         lg:w-[60vw] 
         xl:h-[24vh] 
         xl:w-[39vw] 
+         2xl:w-[35vw] 
         2xl:h-[30vh]
         min-h-[300px] 
         max-h-[400px]

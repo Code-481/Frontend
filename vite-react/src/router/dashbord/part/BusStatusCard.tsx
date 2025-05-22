@@ -181,7 +181,7 @@ export default function BusRoutesCard({ routes }) {
       : "bg-[#0B3D91]";
 
     return (
-      <div className="flex flex-col pt-5 ml-3">
+      <div className="flex flex-col pt-6 ml-3">
         {/* 정류장 및 선 표시 */}
         <div className="flex items-center">
           {processedStops.map((stop, i) => {

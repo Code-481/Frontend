@@ -2,18 +2,17 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-
+ body {
+  display:block;   
+  scrollbar-color: black;
+  }
 
 @media (min-width: 1200px) {
   body {
   overflow-y: hidden;   
+  scrollbar-color: black
   }
 
-}
-
-@media (max-width: 1269px){
-	  body {
-    }
 }
 
 .lg\:grid-cols-3 {

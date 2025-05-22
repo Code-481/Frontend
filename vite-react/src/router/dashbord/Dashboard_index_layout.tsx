@@ -20,7 +20,6 @@ const dummyWeather = {
     { date: "2025-05-21", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
     { date: "2025-05-22", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
     { date: "2025-05-23", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
-    { date: "2025-05-24", minTemperature: 24, maxTemperature: 36, sky: 0, cloud: 2 },
 
   ],
 };
@@ -120,7 +119,7 @@ function Dashboard_index_layout() {
 
       // 오전 5시(05:00)부터 오전 11시 30분(11:30)까지
       const afterStart = hours > 5 || (hours === 5 && minutes >= 0);
-      const beforeEnd = hours < 11 || (hours === 11 && minutes <= 30);
+      const beforeEnd = hours < 23 || (hours === 23 && minutes <= 30);
 
       if (afterStart && beforeEnd) {
         main();
@@ -138,7 +137,7 @@ function Dashboard_index_layout() {
   return (
     <>
       <Topnav />
-      <div className="flex w-screen h-screen overflow-auto">
+      <div className="flex w-screen">
         {/* Side */}
         {true ? (
           <div>
@@ -148,7 +147,7 @@ function Dashboard_index_layout() {
           </div>
         ) : null}
         {/* content */}
-        <div className={false ? "grid" : "grid flex-grow w-full"}>
+        <div className={false ? "grid  overflow-auto" : "grid flex-grow w-full overflow-auto"}>
           <div className=" p-5 bg-white">
             <p className="text-4xl font-bold">DEU 캠퍼스 인포</p>
             <p className="text-2xl text-gray-500">
