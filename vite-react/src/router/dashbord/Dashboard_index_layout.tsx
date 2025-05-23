@@ -1,19 +1,19 @@
-import { AppSidebar } from "../APart/AppSidebar";
-import BusRoutesCard from "./part/BusStatusCard";
-import Topnav from "../APart/Topnav";
+import { AppSidebar } from "../APublic_Compoment/AppSidebar";
+import BusRoutesCard from "./Private_Compoment/BusStatusCard";
+import Topnav from "../APublic_Compoment/Topnav";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import Food_Card from "./part/Food_Card";
+import Food_Card from "../APublic_Compoment/ScholarshipToday";
 import { useEffect, useState } from "react";
 import All_Bus from "@/Api/Bus/Bus_arrival.ts";
-import Festival from "./part/Festival";
+import Festival from "./Private_Compoment/Festival";
 
-import ResponsiveWeatherCard from "./part/weather/WeatherWidgetCard";
+import ResponsiveWeatherCard from "./Private_Compoment/weather/WeatherWidgetCard";
 const dummyWeather = {
   temperature: 34,
   sunsetTime: "6:30 pm",
   location: "Shirdi Sai Nagar",
-  cloud: 1,
-  sky: 2,
+  cloud: 2,
+  sky: 3,
   weekly: [
     { date: "2025-05-19", minTemperature: 23, maxTemperature: 36, sky: 0, cloud: 2 },
     { date: "2025-05-20", minTemperature: 23, maxTemperature: 36, sky: 0, cloud: 2 },
