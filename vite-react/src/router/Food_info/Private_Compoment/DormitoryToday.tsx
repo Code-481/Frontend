@@ -25,7 +25,7 @@ function DormitoryTodaytsx() {
 
     return <>
         <div>
-            <Card className="h-[auto] w-[56vw]
+            <Card className="h-[auto] w-[54vw]
                             overflow-x-auto overflow-y-auto
                             lg:overflow-x-visible lg:overflow-y-visible">
                 <div className="p-4">
@@ -38,7 +38,7 @@ function DormitoryTodaytsx() {
                             <CardContent
                                 className="
                                     overflow-x-auto overflow-y-auto
-                                    max-h-[15vh]
+                                    max-h-[16.5vh]
                                 "
                             >
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-[900px]">

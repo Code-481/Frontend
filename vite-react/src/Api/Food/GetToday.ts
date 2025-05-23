@@ -8,7 +8,6 @@ async function fetchAndStoreData(place: string) {
             `http://code418beta.powerinmd.com/api/v1/univ/foods?place=${place}`
         );
         window.localStorage.setItem(place, JSON.stringify(res.data));
-        console.log("데이터를 새로 받아 저장했습니다.");
         return res.data;
     } catch (error) {
         console.error("식단 데이터 가져오는데 오류 발생: " + error);

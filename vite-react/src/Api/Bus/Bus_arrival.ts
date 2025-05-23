@@ -155,6 +155,5 @@ export default async function All_Bus() {
         };
     });
 
-    console.log(resultList);
     return resultList;
 }

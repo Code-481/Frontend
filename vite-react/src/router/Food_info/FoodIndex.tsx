@@ -4,6 +4,7 @@ import { AppSidebar } from "../APublic_Compoment/AppSidebar";
 import Food_Card from "../APublic_Compoment/ScholarshipToday";
 import DormitoryTodaytsx from "./Private_Compoment/DormitoryToday";
 
+
 function FoodIndex() {
 
     return <>
@@ -18,17 +19,20 @@ function FoodIndex() {
                 </div>
             ) : null}
             {/* content */}
-            <div className={false ? "grid  overflow-auto" : "grid flex-grow w-full overflow-auto"}>
+            <div className={false ? "grid " : "grid flex-grow w-full"}>
                 <div className="p-5">
                     <div className="flex gap-x-4">
                         <DormitoryTodaytsx />
                         <div>
                             <p className="text-4xl font-bold">학식/기숙사 식당</p>
-                            <p className="text-2xl text-gray-500 pb-4">
+                            <p className="text-xl text-gray-500 pb-2">
                                오늘 하고 이번주 밥은 뭘까? 
                             </p>
                             <Food_Card />
                         </div>
+                    </div>
+                    <div>
+                        {/* <Dormitoryweek/> */}
                     </div>
                 </div>
             </div>
