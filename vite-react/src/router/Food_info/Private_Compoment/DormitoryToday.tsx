@@ -24,72 +24,67 @@ function DormitoryTodaytsx() {
     }, []);
 
     return <>
-        <div>
-            <Card className="h-[auto] w-[54vw]
-                            overflow-x-auto overflow-y-auto
-                            lg:overflow-x-visible lg:overflow-y-visible">
-                <div className="p-4">
-                    <p className="text-3xl font-bold pb-3">오늘 기숙사별 식단</p>
-                    <div className="">
-                        <Card className="p-5">
-                            <CardTitle className="text-2xl">
-                                행복기숙사
-                            </CardTitle>
-                            <CardContent
-                                className="
+        <div className="
+                        overflow-x-auto overflow-y-auto
+                        lg:overflow-x-visible lg:overflow-y-visible">
+            <div className="">
+                <Card className="p-5">
+                    <CardTitle className="text-2xl">
+                        행복기숙사 식단
+                    </CardTitle>
+                    <CardContent
+                        className="
                                     overflow-x-auto overflow-y-auto
                                     max-h-[16.5vh]
                                 "
-                            >
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-[900px]">
-                                    {happym.map((date: happy) => (
-                                        <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow">
-                                            {/*@ts-ignore */}
-                                            <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
-                                            <p className="text-lg font-bold">
-                                                {date.food_menu.split(/\/|-/).map((menu, i, arr) => (
-                                                    <span key={i}>
-                                                        {menu.trim()}
-                                                        {i < arr.length - 1 && <br />}
-                                                    </span>
-                                                ))}
-                                            </p>
-                                        </div>
-                                    ))}
+                    >
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-[900px]">
+                            {happym.map((date: happy) => (
+                                <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow">
+                                    {/*@ts-ignore */}
+                                    <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
+                                    <p className="text-lg font-bold">
+                                        {date.food_menu.split(/\/|-/).map((menu, i, arr) => (
+                                            <span key={i}>
+                                                {menu.trim()}
+                                                {i < arr.length - 1 && <br />}
+                                            </span>
+                                        ))}
+                                    </p>
                                 </div>
-                            </CardContent>
-                        </Card>
-                        <Card className="mt-3 p-5">
-                            <CardTitle className="text-2xl">
-                                효민기숙사
-                            </CardTitle>
-                            <CardContent
-                                className="
+                            ))}
+                        </div>
+                    </CardContent>
+                </Card>
+                <Card className="mt-3 p-5">
+                    <CardTitle className="text-2xl">
+                        효민기숙사 식단
+                    </CardTitle>
+                    <CardContent
+                        className="
                                     overflow-x-auto overflow-y-auto
                                     max-h-[15vh]
                                 "
-                            >
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[800px]">
-                                    {hoymin.map((date: happy) => (
-                                        <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow">
-                                            {/*@ts-ignore */}
-                                            <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
-                                            <p className="text-xl font-bold">
-                                                {date.food_menu.split(" ").map((menu, i, arr) => (
-                                                    <span key={i}>
-                                                        {menu.trim()}
-                                                        {i < arr.length - 1 && <br />}
-                                                    </span>
-                                                ))}
-                                            </p>
-                                        </div>
-                                    ))}
+                    >
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[500px]">
+                            {hoymin.map((date: happy) => (
+                                <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow">
+                                    {/*@ts-ignore */}
+                                    <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
+                                    <p className="text-xl font-bold">
+                                        {date.food_menu.split(" ").map((menu, i, arr) => (
+                                            <span key={i}>
+                                                {menu.trim()}
+                                                {i < arr.length - 1 && <br />}
+                                            </span>
+                                        ))}
+                                    </p>
                                 </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
-            </Card>
+                            ))}
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
         </div>
     </>
 }
