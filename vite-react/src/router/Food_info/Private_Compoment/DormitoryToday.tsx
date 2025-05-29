@@ -24,7 +24,7 @@ function DormitoryTodaytsx() {
     }, []);
 
     return <>
-        <div className=" overflow-x-auto overflow-y-auto  w-[auto] h-[55vh] xl:h-[55vh] ">
+        <div className=" overflow-x-auto overflow-y-auto  w-[auto] h-[55vh] xl:h-[auto] ">
             <div className="">
                 <Card className="p-5">
                     <CardTitle className="text-2xl">

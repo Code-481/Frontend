@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { getWeekFood } from "@/Api/Food/GetWeek";
 import { Sandwich } from "lucide-react";
-import types from "./type.json"
+import types from "./type.json";
 
 function Dormitoryweek() {
   const [activeTab, setActiveTab] = useState<"hyomin" | "happy">("hyomin");
@@ -19,15 +19,19 @@ function Dormitoryweek() {
 
   useEffect(() => {
     // 실제로는 getWeekFood("hyomin").then(setHyominFoods) 등으로 사용
-    getWeekFood("hyomin").then((result) => { setHyominFoods(result) })
+    getWeekFood("hyomin").then((result) => {
+      setHyominFoods(result);
+    });
     getWeekFood("happy").then((result) => {
-      setHappyFoods(result)
-    })
+      setHappyFoods(result);
+    });
   }, []);
 
-
   // 카드 리스트 렌더링 함수
-  const renderFoodCards = (groupedFoods: Record<string, any[]>, isHyomin: boolean) => (
+  const renderFoodCards = (
+    groupedFoods: Record<string, any[]>,
+    isHyomin: boolean
+  ) => (
     <div className="flex gap-4 overflow-x-auto pb-4">
       {Object.keys(groupedFoods).length === 0 ? (
         <div className="text-gray-400 p-4">식단 정보가 없습니다.</div>
@@ -38,11 +42,10 @@ function Dormitoryweek() {
             <CardContent>
               <div className={activeTab == "happy" ? "flex gap-x-3" : ""}>
                 {meals
-                  .filter(
-                    meal =>
-                      isHyomin
-                        ? !["lunch_s", "dinner_s"].includes(meal.getMealType)
-                        : true
+                  .filter((meal) =>
+                    isHyomin
+                      ? !["lunch_s", "dinner_s"].includes(meal.getMealType)
+                      : true
                   )
                   .map((meal, idx) => (
                     <div key={idx}>
@@ -53,7 +56,9 @@ function Dormitoryweek() {
                         {meal.food_menu
                           .split(" / ")
                           .map((menu: string, i: number) => (
-                            <p key={i}>{menu}</p>
+                            <p key={i} style={{ whiteSpace: "pre-line" }}>
+                              {menu.replace(/-/g, "\n")}
+                            </p>
                           ))}
                       </p>
                     </div>
@@ -86,16 +91,16 @@ function Dormitoryweek() {
         </Button>
       </div>
       {/* 탭 콘텐츠 */}
-      <div className="w-[76vw]">
+      <div>
         {activeTab === "hyomin" && (
           <>
-            <h2 className="mb-2 font-bold text-3xl">효민기숙사 주간 식단표</h2>
+            <h2 className="mb-5 font-bold text-3xl">효민기숙사 주간 식단표</h2>
             {renderFoodCards(hyominFoods, true)}
           </>
         )}
         {activeTab === "happy" && (
           <>
-            <h2 className="mb-2 font-bold text-3xl">행복기숙사 주간 식단표</h2>
+            <h2 className="mb-5 font-bold text-3xl">행복기숙사 주간 식단표</h2>
             {renderFoodCards(happyFoods, false)}
           </>
         )}
