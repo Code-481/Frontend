@@ -4,7 +4,6 @@ package com.code418.frontend.deu_info;
  *
  * @author INMD1
  */
-
 import com.sun.net.httpserver.HttpServer;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
@@ -62,45 +61,67 @@ public class httpservers {
         @Override
         public void handle(HttpExchange exchange) throws IOException {
             String uriPath = exchange.getRequestURI().getPath();
-            if (uriPath.equals("/")) {
-                uriPath = "/index.html"; // 루트는 index.html로
-            }
-            // 윈도우 경로 처리: /C:/... → C:/...
-            if (uriPath.length() > 2 && uriPath.charAt(0) == '/' && uriPath.charAt(2) == ':') {
-                uriPath = uriPath.substring(1);
+            String effectivePath = uriPath;
+
+            // 루트 경로("/") 요청 시 index.html로 매핑
+            if (effectivePath.equals("/")) {
+                effectivePath = "/index.html";
             }
 
-            File file = new File(rootDir + uriPath);
+            // 기존의 윈도우 경로 처리 로직 (사용자 환경에 따라 필요시 유지)
+            if (effectivePath.length() > 2 && effectivePath.charAt(0) == '/' && effectivePath.charAt(2) == ':') {
+                effectivePath = effectivePath.substring(1);
+            }
 
-            if (file.exists() && file.isFile()) {
-                String contentType = guessContentType(file.getName());
-                exchange.getResponseHeaders().add("Content-Type", contentType);
-                byte[] bytes = Files.readAllBytes(file.toPath());
-                exchange.sendResponseHeaders(200, bytes.length);
-                try (OutputStream os = exchange.getResponseBody()) {
-                    os.write(bytes);
-                }
+            File requestedFile = new File(rootDir + effectivePath);
+
+            if (requestedFile.exists() && requestedFile.isFile()) {
+                // 요청된 파일이 존재하면 해당 파일 제공 (예: /static/js/main.js, /index.html 등)
+                serveFile(exchange, requestedFile);
             } else {
-                String resp = "404 Not Found";
-                exchange.sendResponseHeaders(404, resp.length());
-                try (OutputStream os = exchange.getResponseBody()) {
-                    os.write(resp.getBytes());
+                // 요청된 파일이 존재하지 않으면 index.html 제공 (SPA 라우팅 지원)
+                File indexHtmlFile = new File(rootDir + "/index.html");
+                if (indexHtmlFile.exists() && indexHtmlFile.isFile()) {
+                    serveFile(exchange, indexHtmlFile); // HTTP 200 상태 코드와 함께 index.html 제공
+                } else {
+                    // index.html 파일조차 찾을 수 없는 경우 (설정 오류)
+                    sendNotFoundResponse(exchange, "404 Not Found: Requested resource and index.html not found.");
                 }
             }
         }
 
+        private void serveFile(HttpExchange exchange, File file) throws IOException {
+            String contentType = guessContentType(file.getName());
+            exchange.getResponseHeaders().set("Content-Type", contentType); // set 대신 add를 사용해도 되지만, set이 일반적.
+            byte[] bytes = Files.readAllBytes(file.toPath());
+            exchange.sendResponseHeaders(200, bytes.length); // 파일 성공적으로 찾았으므로 200 OK
+            try (OutputStream os = exchange.getResponseBody()) {
+                os.write(bytes);
+            }
+        }
+
+        private void sendNotFoundResponse(HttpExchange exchange, String message) throws IOException {
+            byte[] responseBytes = message.getBytes("UTF-8");
+            exchange.getResponseHeaders().set("Content-Type", "text/plain; charset=UTF-8");
+            exchange.sendResponseHeaders(404, responseBytes.length);
+            try (OutputStream os = exchange.getResponseBody()) {
+                os.write(responseBytes);
+            }
+        }
+
+        // guessContentType 메서드는 기존과 동일
         private String guessContentType(String filename) {
             if (filename.endsWith(".html")) {
-                return "text/html";
+                return "text/html; charset=UTF-8";
             }
             if (filename.endsWith(".js")) {
-                return "application/javascript";
+                return "application/javascript; charset=UTF-8";
             }
             if (filename.endsWith(".css")) {
-                return "text/css";
+                return "text/css; charset=UTF-8";
             }
             if (filename.endsWith(".json")) {
-                return "application/json";
+                return "application/json; charset=UTF-8";
             }
             if (filename.endsWith(".png")) {
                 return "image/png";
@@ -110,6 +131,9 @@ public class httpservers {
             }
             if (filename.endsWith(".svg")) {
                 return "image/svg+xml";
+            }
+            if (filename.endsWith(".ico")) {
+                return "image/x-icon"; // favicon.ico 등
             }
             return "application/octet-stream";
         }

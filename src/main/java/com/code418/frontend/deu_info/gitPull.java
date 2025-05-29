@@ -64,7 +64,7 @@ public class gitPull {
 
                 // 알림 표기 (UI 스레드)
                 Platform.runLater(() -> {
-                    alret.info("최신 업데이트", "지정된 Repo 사이트에서 최신데이터를 확인하고 불려오고 있습니다.");
+                    alret.close_info("최신 업데이트", "지정된 Repo 사이트에서 최신데이터를 확인하고 불려오고 있습니다.", 4);
                 });
 
                 // 클론

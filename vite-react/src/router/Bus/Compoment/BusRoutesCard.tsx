@@ -144,7 +144,7 @@ export default function BusRoutesCard({ routes }) {
   };
 
   return (
-    <Card className="shadow-md rounded-2xl p-5 h-auto w-7/10 2xl:w-6/10  ">
+    <Card className="shadow-md rounded-2xl p-5 h-auto w-7/10 2xl:w-7/10  ">
       <div className="flex gap-6 mb-4 flex-wrap">
         <div className="flex items-center">
           <Bus className="text-orange-500 w-6 h-6 mr-1" />
