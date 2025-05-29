@@ -19,6 +19,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
+        //다른 곳에서 깨질까봐 폰트를 집어 넣음
         Font.loadFont(getClass().getResourceAsStream("/fonts/NanumGothic.ttf"), 14);
         try {
             // WebView 
@@ -63,6 +64,7 @@ public class App extends Application {
                         stage.setScene(scene);
                         stage.setTitle("Code418 크로스 플랫폼");
                         stage.show();
+                        
                         // X자 아이콘을 클릭시 내부 서버 종료
                         stage.setOnCloseRequest(event -> server.stop());
                     } else {
