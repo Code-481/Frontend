@@ -2,6 +2,7 @@ import { Route, BrowserRouter, Routes } from "react-router";
 import Main_index from "./router/Main/Main_index";
 import Dashboard_index_layout from "./router/dashbord/Dashboard_index_layout";
 import FoodIndex from "./router/Food_info/FoodIndex";
+import Busno from "./router/Bus/router/Busno";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route path="/" element={<Main_index />} />
             <Route path="/dashboard" element={<Dashboard_index_layout />} />
             <Route path="/foodinfo" element={<FoodIndex />} />
+              <Route path="/busno/:busID" element={<Busno />} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -56,22 +56,22 @@ function Main_index() {
         </div>
         <div className="separator">DEU BUS INFO</div>
         <div className="grid justify-items-start pt-5 pl-10 gap-y-3">
-          <Button variant="ghost" className="text-lg">
+          <Button variant="ghost" className="text-lg" onClick={() => navigate("/Busno/b64c6as")}>
             <FaBusSimple color="#0B3D91" />
             진구 6번
           </Button>
-          <Button variant="ghost" className="text-lg">
+          <Button variant="ghost" className="text-lg"  onClick={() => navigate("/Busno/12c69as")}>
             <FaBusSimple color="#0B3D91" />
             진구 6-1번
           </Button>
-          <Button variant="ghost" className="text-lg">
+          <Button variant="ghost" className="text-lg"  onClick={() => navigate("/Busno/as5c67as")}>
             <FaBusSimple color="#8BC34A" />
             진구 9번
           </Button>
-          <Button variant="ghost" className="text-lg">
+          {/* <Button variant="ghost" className="text-lg">
             <FaBusSimple color="#2096F3" />
             110-1번
-          </Button>
+          </Button> */}
         </div>
         <div className="text-center text-[0.7rem] pt-5">
           <p>위 버스 번호를 터치하거나 클릭 하시면</p>

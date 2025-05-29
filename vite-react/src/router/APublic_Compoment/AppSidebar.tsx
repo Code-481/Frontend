@@ -28,24 +28,24 @@ const Menuitems = [
 const Bus_Info = [
   {
     title: "진구 6번",
-    url: "#",
+    url: "/Busno/b64c6as",
     icon: BusFront,
   },
   {
     title: "진구 6-1번",
-    url: "#",
+    url: "/Busno/12c69as",
     icon: BusFront,
   },
   {
     title: "진구 9번",
-    url: "#",
+    url: "/Busno/as5c67as",
     icon: BusFront,
   },
-  {
-    title: "시내 110-1번",
-    url: "#",
-    icon: BusFront,
-  }
+  // {
+  //   title: "시내 110-1번",
+  //   url: "/Busno/88448ca",
+  //   icon: BusFront,
+  // }
 ]
 
 

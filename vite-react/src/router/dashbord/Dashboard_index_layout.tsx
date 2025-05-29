@@ -187,7 +187,7 @@ function Dashboard_index_layout() {
                 </div>
               </div>
               {/*  날씨 보여주는   */}
-              <div className="w-2/5 pt-5">
+              <div className=" pt-5">
                 <ResponsiveWeatherCard date={""} {...weather} />
               </div>
             </div>
