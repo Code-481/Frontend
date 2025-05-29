@@ -94,13 +94,13 @@ function Dormitoryweek() {
       <div>
         {activeTab === "hyomin" && (
           <>
-            <h2 className="mb-2 font-bold text-3xl">효민기숙사 주간 식단표</h2>
+            <h2 className="mb-5 font-bold text-3xl">효민기숙사 주간 식단표</h2>
             {renderFoodCards(hyominFoods, true)}
           </>
         )}
         {activeTab === "happy" && (
           <>
-            <h2 className="mb-2 font-bold text-3xl">행복기숙사 주간 식단표</h2>
+            <h2 className="mb-5 font-bold text-3xl">행복기숙사 주간 식단표</h2>
             {renderFoodCards(happyFoods, false)}
           </>
         )}

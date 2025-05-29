@@ -6,7 +6,22 @@ import dayjs from "dayjs";
 
 function Food_Card() {
   const [data, Setdata] = useState([]);
+  const [loading, setLoading] = useState(true);
+  
+  // 주말 판별 함수
+  const isWeekend = () => {
+    const today = dayjs();
+    return today.day() === 0 || today.day() === 6; // 0: 일요일, 6: 토요일
+  };
+
   useEffect(() => {
+    // 주말이면 API 호출하지 않고 로딩 상태만 false로 변경
+    if (isWeekend()) {
+      setLoading(false);
+      return;
+    }
+
+    // 평일에만 API 호출
     axios
       .get(
         "https://raw.githubusercontent.com/asw-dod/Deu_food_api/master/output/api.json"
@@ -65,13 +80,41 @@ function Food_Card() {
             Setdata(convertMenuData(res.data.meals[index]));
           }
         }
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
+        setLoading(false);
       });
   }, []);
+
   console.log(data);
 
+  // 주말인 경우 운영 중단 메시지 표시
+  if (isWeekend()) {
+    return (
+      <div className="w-full lg:w-[31vw]">
+        <Card className="h-[46vh] xl:h-[auto] md:overflow-y-auto">
+          <div className="p-4">
+            <p className="text-3xl font-bold pb-3">대학 식당 안내</p>
+            <div className="text-center py-8">
+              <div className="mb-6">
+                <span className="text-6xl">🍽️</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-4">주말 운영 안내</h3>
+              <p className="text-gray-600 text-lg">대학 식당은 주말에 운영하지 않습니다.</p>
+              <p className="text-gray-600 mt-2">평일(월~금)에 이용해 주세요.</p>
+              <div className="mt-6 text-sm text-gray-500">
+                <p>운영시간: 평일 11:30 - 14:00, 17:00 - 19:00</p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+    );
+  }
+
+  // 평일 메뉴 표시 (기존 코드)
   return (
     <div className="w-full lg:w-[31vw]">
       <Card className="h-[46vh] xl:h-[auto] md:overflow-y-auto">
@@ -87,7 +130,7 @@ function Food_Card() {
                   </CardTitle>
                   <CardDescription className="text-md">
                     {/*@ts-ignore*/}
-                    {data[0]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[0]?.menus[0].name}
+                    {data[0]?.menus[0]?.name == undefined ? "데이터를 가져오는중" : data[0]?.menus[0]?.name}
                   </CardDescription>
                 </div>
                 <div className="">
@@ -97,7 +140,7 @@ function Food_Card() {
                   </CardTitle>
                   <CardDescription className="text-md">
                     {/*@ts-ignore*/}
-                    {data[1]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[1]?.menus[0].name}
+                    {data[1]?.menus[0]?.name == undefined ? "데이터를 가져오는중" : data[1]?.menus[0]?.name}
                   </CardDescription>
                 </div>
                 <div>
@@ -107,7 +150,7 @@ function Food_Card() {
                   </CardTitle>
                   <CardDescription className="text-md">
                     {/*@ts-ignore*/}
-                    {data[2]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[2]?.menus[0].name}
+                    {data[2]?.menus[0]?.name == undefined ? "데이터를 가져오는중" : data[2]?.menus[0]?.name}
                   </CardDescription>
                 </div>
               </Card>
@@ -119,7 +162,7 @@ function Food_Card() {
                   </CardTitle>
                   <CardDescription className="text-md">
                     {/*@ts-ignore*/}
-                    {data[3]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[3]?.menus[0].name}
+                    {data[3]?.menus[0]?.name == undefined ? "데이터를 가져오는중" : data[3]?.menus[0]?.name}
                   </CardDescription>
                 </div>
                 <div className="">
@@ -129,7 +172,7 @@ function Food_Card() {
                   </CardTitle>
                   <CardDescription className="text-md">
                     {/*@ts-ignore*/}
-                    {data[4]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[4]?.menus[0].name}
+                    {data[4]?.menus[0]?.name == undefined ? "데이터를 가져오는중" : data[4]?.menus[0]?.name}
                   </CardDescription>
                 </div>
                 <div className="">
@@ -139,7 +182,7 @@ function Food_Card() {
                   </CardTitle>
                   <CardDescription className="text-md">
                     {/*@ts-ignore*/}
-                    {data[5]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[5]?.menus[0].name}
+                    {data[5]?.menus[0]?.name == undefined ? "데이터를 가져오는중" : data[5]?.menus[0]?.name}
                   </CardDescription>
                 </div>
                 <div className="">
@@ -149,7 +192,7 @@ function Food_Card() {
                   </CardTitle>
                   <CardDescription className="text-md">
                     {/*@ts-ignore*/}
-                    {data[6]?.menus[0].name == undefined ? "데이터를 가져오는중" : data[6]?.menus[0].name}
+                    {data[6]?.menus[0]?.name == undefined ? "데이터를 가져오는중" : data[6]?.menus[0]?.name}
                   </CardDescription>
                 </div>
               </Card>
