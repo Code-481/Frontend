@@ -24,23 +24,18 @@ function DormitoryTodaytsx() {
     }, []);
 
     return <>
-        <div className="
-                        overflow-x-auto overflow-y-auto
-                        lg:overflow-x-visible lg:overflow-y-visible">
+        <div className=" overflow-x-auto overflow-y-auto  w-[auto] h-[55vh] xl:h-[55vh] ">
             <div className="">
                 <Card className="p-5">
                     <CardTitle className="text-2xl">
                         행복기숙사 식단
                     </CardTitle>
                     <CardContent
-                        className="
-                                    overflow-x-auto overflow-y-auto
-                                    max-h-[16.5vh]
-                                "
+                        className=" overflow-x-auto overflow-y-auto"
                     >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-[900px]">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                             {happym.map((date: happy) => (
-                                <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow">
+                                <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow max-w-[180px]">
                                     {/*@ts-ignore */}
                                     <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
                                     <p className="text-lg font-bold">
@@ -61,17 +56,13 @@ function DormitoryTodaytsx() {
                         효민기숙사 식단
                     </CardTitle>
                     <CardContent
-                        className="
-                                    overflow-x-auto overflow-y-auto
-                                    max-h-[15vh]
-                                "
-                    >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[500px]">
+                        className="overflow-x-auto overflow-y-auto" >
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                             {hoymin.map((date: happy) => (
                                 <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow">
                                     {/*@ts-ignore */}
                                     <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
-                                    <p className="text-xl font-bold">
+                                    <p className="text-lg font-bold">
                                         {date.food_menu.split(" ").map((menu, i, arr) => (
                                             <span key={i}>
                                                 {menu.trim()}

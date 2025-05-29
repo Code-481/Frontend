@@ -8,10 +8,12 @@ export function getCloudText(code: number): string {
 }
 export function getWeatherIcon(cloud?: number, sky?: number): string {
   // sky는 비, 눈 등 우선 처리
-  if (sky === 1) return "🌧️";
-  if (sky === 2) return "🌨️";
-  if (sky === 3) return "❄️";
-  if (sky === 4) return "🌦️";
+  //@ts-ignore
+  if (sky === "") return '🌈';
+  if (sky === 1 || "WB01") return "☀️";
+  if (sky === 2 || "WB02") return "🌤️";
+  if (sky === 3 || "WB03") return "🌥️";
+  if (sky === 4 || "WB04") return "☁️";
   if (cloud === 1) return "☀️";
   if (cloud === 2) return "⛅";
   if (cloud === 3) return "☁️";

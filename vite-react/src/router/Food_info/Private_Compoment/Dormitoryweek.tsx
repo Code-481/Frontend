@@ -1,94 +1,106 @@
-import { useState } from "react";
+//@ts-nocheck
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { getWeekFood } from "@/Api/Food/GetWeek";
+import { Sandwich } from "lucide-react";
+import types from "./type.json"
 
 function Dormitoryweek() {
-  const [activeTab, setActiveTab] = useState("account");
+  const [activeTab, setActiveTab] = useState<"hyomin" | "happy">("hyomin");
+  const [hyominFoods, setHyominFoods] = useState<any>({});
+  const [happyFoods, setHappyFoods] = useState<any>({});
+
+  useEffect(() => {
+    // 실제로는 getWeekFood("hyomin").then(setHyominFoods) 등으로 사용
+    getWeekFood("hyomin").then((result) => { setHyominFoods(result) })
+    getWeekFood("happy").then((result) => {
+      setHappyFoods(result)
+    })
+  }, []);
+
+
+  // 카드 리스트 렌더링 함수
+  const renderFoodCards = (groupedFoods: Record<string, any[]>, isHyomin: boolean) => (
+    <div className="flex gap-4 overflow-x-auto pb-4">
+      {Object.keys(groupedFoods).length === 0 ? (
+        <div className="text-gray-400 p-4">식단 정보가 없습니다.</div>
+      ) : (
+        Object.entries(groupedFoods).map(([date, meals]) => (
+          <Card key={date} className="min-w-[320px] flex-shrink-0 p-5">
+            <CardTitle className="text-2xl">{date}</CardTitle>
+            <CardContent>
+              <div className={activeTab == "happy" ? "flex gap-x-3" : ""}>
+                {meals
+                  .filter(
+                    meal =>
+                      isHyomin
+                        ? !["lunch_s", "dinner_s"].includes(meal.getMealType)
+                        : true
+                  )
+                  .map((meal, idx) => (
+                    <div key={idx}>
+                      <span className="font-semibold">
+                        {types[meal.getMealType]}
+                      </span>
+                      <p className="list-disc pb-3">
+                        {meal.food_menu
+                          .split(" / ")
+                          .map((menu: string, i: number) => (
+                            <p key={i}>{menu}</p>
+                          ))}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            </CardContent>
+          </Card>
+        ))
+      )}
+    </div>
+  );
 
   return (
-    <>
-      <div className="grid pt-5">
-        {/* 커스텀 탭 버튼들 */}
-        <div className="flex w-10  gap-x-4 mb-4">
-          <Button
-            variant={activeTab === "account" ? "default" : "outline"}
-            onClick={() => setActiveTab("account")}
-            className="flex-1"
-          >
-            효민기숙사
-          </Button>
-          <Button
-            variant={activeTab === "password" ? "default" : "outline"}
-            onClick={() => setActiveTab("password")}
-            className="flex-1"
-          >
-            행복기숙사
-          </Button>
-        </div>
-
-        {/* 탭 콘텐츠만 포함 */}
-        <div className="w-full">
-          {activeTab === "account" && (
-            //아마 각각 카드로 표시
-            <Card className="p-5">
-              <CardHeader>
-                <CardTitle>효민기숙사</CardTitle>
-                <CardDescription>
-                  효민기숙사 식단표를 확인하세요.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" defaultValue="Pedro Duarte" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="username">Username</Label>
-                  <Input id="username" defaultValue="@peduarte" />
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button>Save changes</Button>
-              </CardFooter>
-            </Card>
-          )}
-
-          {activeTab === "password" && (
-            //아마 각각 카드로 표시
-            <Card className="p-5">
-              <CardHeader>
-                <CardTitle>행복기숙사</CardTitle>
-                <CardDescription>
-                  행복기숙사 식단표를 확인하세요.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="current">Current password</Label>
-                  <Input id="current" type="password" />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="new">New password</Label>
-                  <Input id="new" type="password" />
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button>Save password</Button>
-              </CardFooter>
-            </Card>
-          )}
-        </div>
+    <div className="grid pt-5">
+      {/* 탭 버튼 */}
+      <div className="flex w-10 gap-x-4 mb-4">
+        <Button
+          variant={activeTab === "hyomin" ? "default" : "outline"}
+          onClick={() => setActiveTab("hyomin")}
+          className="flex-1"
+        >
+          효민기숙사
+        </Button>
+        <Button
+          variant={activeTab === "happy" ? "default" : "outline"}
+          onClick={() => setActiveTab("happy")}
+          className="flex-1"
+        >
+          행복기숙사
+        </Button>
       </div>
-    </>
+      {/* 탭 콘텐츠 */}
+      <div className="w-[76vw]">
+        {activeTab === "hyomin" && (
+          <>
+            <h2 className="mb-2 font-bold text-3xl">효민기숙사 주간 식단표</h2>
+            {renderFoodCards(hyominFoods, true)}
+          </>
+        )}
+        {activeTab === "happy" && (
+          <>
+            <h2 className="mb-2 font-bold text-3xl">행복기숙사 주간 식단표</h2>
+            {renderFoodCards(happyFoods, false)}
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 

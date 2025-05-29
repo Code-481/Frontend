@@ -99,7 +99,7 @@ function transformBusData(data, direction) {
 
 // 메인 함수
 export default async function All_Bus() {
-    const result = await axios.get("http://code418beta.powerinmd.com/api/v1/bus/stop/arrival?stopId=all");
+    const result = await axios.get("http://code418back.powerinmd.com/api/v1/bus/stop/arrival?stopId=all");
 
     let up_json = [], down_json = [];
     for (let key = 0; key < keys.length; key++) {

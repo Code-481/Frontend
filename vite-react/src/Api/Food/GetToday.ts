@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 async function fetchAndStoreData(place: string) {
     try {
         const res = await axios.get(
-            `http://code418beta.powerinmd.com/api/v1/univ/foods?place=${place}`
+            `http://code418back.powerinmd.com/api/v1/univ/foods?place=${place}`
         );
         window.localStorage.setItem(place, JSON.stringify(res.data));
         return res.data;
