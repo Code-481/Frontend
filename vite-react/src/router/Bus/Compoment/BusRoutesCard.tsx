@@ -32,7 +32,7 @@ export default function BusRoutesCard({ routes }) {
     const lineColor = routeIndex === 2 ? "#8BC34A" : "#0B3D91"; // 9번: 초록, 나머지: 파랑
 
     return (
-      <div className="flex flex-col pt-6 ml-3">
+      <div className="flex flex-col pt-6 ml-3 ">
         {/* 정류장 및 선 표시 */}
         <div className="flex items-center pb-4">
           {/* 왼쪽 끝 막대 */}
@@ -144,7 +144,7 @@ export default function BusRoutesCard({ routes }) {
   };
 
   return (
-    <Card className="shadow-md rounded-2xl p-5 w-auto h-auto">
+    <Card className="shadow-md rounded-2xl p-5 h-auto w-7/10 2xl:w-6/10  ">
       <div className="flex gap-6 mb-4 flex-wrap">
         <div className="flex items-center">
           <Bus className="text-orange-500 w-6 h-6 mr-1" />
