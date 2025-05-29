@@ -1,0 +1,53 @@
+name: Push and Commit automation
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Clean up lock and node_modules (for cross-platform safety)
+        working-directory: vite-react
+        run: |
+          rm -rf node_modules package-lock.json yarn.lock
+
+      - name: Install dependencies with npm
+        working-directory: vite-react
+        run: npm install
+
+      - name: Build Vite React App
+        working-directory: vite-react
+        run: npm run build
+
+      - name: Commit and push any changes to main (if needed)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && echo "No changes to commit." || git commit -m "🤖 Update main branch files via CI"
+          git push origin main
+
+      - name: Deploy dist to build branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: build
+          publish_dir: vite-react/dist
+          force_orphan: true
