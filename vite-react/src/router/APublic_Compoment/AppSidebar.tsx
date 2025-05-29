@@ -15,12 +15,12 @@ import {
 const Menuitems = [
   {
     title: "Deu Info 서비스",
-    url: "#",
+    url: "/dashboard",
     icon: Info,
   },
   {
     title: "학식/기숙사 식당",
-    url: "#",
+    url: "/foodinfo",
     icon: Utensils,
   }
 ]
