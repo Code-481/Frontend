@@ -4,23 +4,31 @@ package com.code418.frontend.deu_info;
  *
  * @author INMD1
  */
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import java.io.File;
+import java.io.IOException;
 import javafx.application.Platform;
 import javafx.scene.text.Font;
+import org.yaml.snakeyaml.Yaml;
 
 public class App extends Application {
 
     private final alret_message alret = new alret_message();
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws IOException, Exception {
         //다른 곳에서 깨질까봐 폰트를 집어 넣음
         Font.loadFont(getClass().getResourceAsStream("/fonts/NanumGothic.ttf"), 14);
+
+        //설정 파일로
+        YamlReader config = new YamlReader();
+        System.out.println(config.isFullscreen());
         try {
             // WebView 
             WebView webView = new WebView();
@@ -59,12 +67,17 @@ public class App extends Application {
                     if (resourceDir.exists() && resourceDir.isDirectory()) {
                         server.start();
                         webView.getEngine().load("http://localhost:" + port);
-
-                        Scene scene = new Scene(webView, 1920, 1080);
+                        Scene scene;
+                        if (config.fullscreen) {
+                            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                            scene = new Scene(webView, screenSize.getWidth(), screenSize.getHeight());
+                            stage.setFullScreen(true);
+                        } else {
+                            scene = new Scene(webView, 1920, 1080);
+                        }
                         stage.setScene(scene);
                         stage.setTitle("Code418 크로스 플랫폼");
                         stage.show();
-                        
                         // X자 아이콘을 클릭시 내부 서버 종료
                         stage.setOnCloseRequest(event -> server.stop());
                     } else {
