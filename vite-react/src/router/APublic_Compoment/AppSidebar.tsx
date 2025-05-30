@@ -1,4 +1,4 @@
-import { BusFront, Info, Utensils } from "lucide-react"
+import { BusFront, Info, Utensils, Map } from "lucide-react"
 
 import {
   Sidebar,
@@ -14,18 +14,23 @@ import {
 // Menu items.
 const Menuitems = [
   {
-    title: "Deu Info 서비스",
+    title: "동의대 종합정보창",
     url: "/dashboard",
     icon: Info,
   },
   {
-    title: "학식/기숙사 식당",
+    title: "학식/기숙사 식단",
     url: "/foodinfo",
     icon: Utensils,
   }
 ]
 
 const Bus_Info = [
+  {
+    title: "버스 지도",
+    url: "/busmap",
+    icon: Map,
+  },
   {
     title: "진구 6번",
     url: "/Busno/b64c6as",
@@ -53,7 +58,7 @@ export function AppSidebar() {
   return (
     <>
       <br />
-      <Sidebar className="pr-4">
+      <Sidebar className="pr-2">
         <SidebarContent>
           <SidebarGroup>
             <SidebarGroupLabel className=" pb-2 text-xl font-bold">Menu</SidebarGroupLabel>

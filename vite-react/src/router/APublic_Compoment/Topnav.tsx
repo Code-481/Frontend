@@ -5,7 +5,7 @@ import deulogo from "../../assets/image/logo-symbol-01.png";
 function Topnav() {
   const navigate = useNavigate();
   function hadle() {
-    navigate("/dashboard");
+    navigate("/");
   }
   return (
     <nav className="flex p-4 line_nav" onClick={() => hadle()}>
