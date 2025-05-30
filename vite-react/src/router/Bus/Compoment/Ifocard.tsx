@@ -45,41 +45,41 @@ function Infocard(id: any) {
 
   return (
     <>
-      <div className="w-7/10 2xl:w-6/10">
+      <div className="w-7/10 sm:w-auto 2xl:w-6/10">
         <Card>
-          <Table>
+          <Table className="text-md">
             <TableBody>
               <TableRow>
-                <TableCell className="font-medium">기점</TableCell>
+                <TableCell className="font-medium">ㅤ기점</TableCell>
                 <TableCell>{jsondata.start_point}</TableCell>
                 <TableCell className="font-medium">종점</TableCell>
                 <TableCell>{jsondata.end_point}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">첫차</TableCell>
+                <TableCell className="font-medium">ㅤ첫차</TableCell>
                 <TableCell>{jsondata.first_bus}</TableCell>
                 <TableCell className="font-medium">막차</TableCell>
                 <TableCell >{jsondata.last_bus}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">평일 배차</TableCell>
+                <TableCell className="font-medium">ㅤ평일 배차</TableCell>
                 <TableCell>{jsondata.weekday_interval}</TableCell>
                 <TableCell className="font-medium">주말 배차</TableCell>
                 <TableCell>{jsondata.weekend_interval}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">운수사명</TableCell>
+                <TableCell className="font-medium">ㅤ운수사명</TableCell>
                 <TableCell>{jsondata.operator}</TableCell>
                 <TableCell className="font-medium">인가대수</TableCell>
                 <TableCell>{jsondata.authorized_vehicles}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="font-medium">노선</TableCell>
+                <TableCell className="font-medium">ㅤ노선</TableCell>
                 <TableCell colSpan={3} className="p-4">
                   <div className="flex flex-wrap gap-1 leading-relaxed">
                     {jsondata.route.map((name, index) => (
                       <span key={index} className="inline-flex items-center">
-                        <span className="text-sm">{name}</span>
+                        <span className="">{name}</span>
                         {index < jsondata.route.length - 1 && (
                           <span className="mx-1 text-gray-400">→</span>
                         )}

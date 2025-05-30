@@ -158,7 +158,7 @@ function Dashboard_index_layout() {
           </div>
         ) : null}
         {/* content */}
-        <div className={false ? "grid  overflow-y-auto" : "grid flex-grow w-full overflow-y-auto"}>
+        <div className={false ? "grid  overflow-y-auto" : "grid flex-grow w-full h-screen overflow-y-auto"}>
           <div className=" p-5 bg-white">
             <p className="text-4xl font-bold">DEU 캠퍼스 인포</p>
             <p className="text-2xl text-gray-500">

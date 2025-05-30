@@ -1,83 +1,48 @@
 import getTodayFood from "@/Api/Food/GetToday";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { useEffect, useState } from "react";
-import types from "./type.json"
-interface happy {
-    date: string,
-    dormType: string,
-    food_menu: string,
-    getMealType: string
+import types from "./type.json";
+
+interface Food {
+    date: string;
+    dormType: string;
+    food_menu: string;
+    getMealType: string;
 }
-function DormitoryTodaytsx() {
-    const [happym, sethappy] = useState([]);
-    const [hoymin, sethoymin] = useState([]);
+
+export default function DormitoryToday({ dorm }: { dorm: "hyomin" | "happy" }) {
+    const [foods, setFoods] = useState<Food[]>([]);
 
     useEffect(() => {
-        getTodayFood("happy").then(todayFoods => {
-            //@ts-ignore
-            sethappy(todayFoods);
-        });
-        getTodayFood("hyomin").then(todayFoods => {
-            //@ts-ignore
-            sethoymin(todayFoods);
-        });
-    }, []);
+        getTodayFood(dorm).then(setFoods);
+    }, [dorm]);
 
-    return <>
-        <div className=" overflow-x-auto overflow-y-auto  w-[auto] h-[55vh] xl:h-[auto] ">
-            <div className="">
-                <Card className="p-5">
-                    <CardTitle className="text-2xl">
-                        행복기숙사 식단
-                    </CardTitle>
-                    <CardContent
-                        className=" overflow-x-auto overflow-y-auto"
-                    >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                            {happym.map((date: happy) => (
-                                <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow max-w-[180px]">
-                                    {/*@ts-ignore */}
-                                    <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
-                                    <p className="text-lg font-bold">
-                                        {date.food_menu.split(/\/|-/).map((menu, i, arr) => (
-                                            <span key={i}>
-                                                {menu.trim()}
-                                                {i < arr.length - 1 && <br />}
-                                            </span>
-                                        ))}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </CardContent>
-                </Card>
-                <Card className="mt-3 p-5">
-                    <CardTitle className="text-2xl">
-                        효민기숙사 식단
-                    </CardTitle>
-                    <CardContent
-                        className="overflow-x-auto overflow-y-auto" >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                            {hoymin.map((date: happy) => (
-                                <div key={date.date + date.getMealType} className="border rounded p-2 bg-white shadow">
-                                    {/*@ts-ignore */}
-                                    <p className="text-xl font-bold">[{types[date.getMealType]}]</p>
-                                    <p className="text-lg font-bold">
-                                        {date.food_menu.split(" ").map((menu, i, arr) => (
-                                            <span key={i}>
-                                                {menu.trim()}
-                                                {i < arr.length - 1 && <br />}
-                                            </span>
-                                        ))}
-                                    </p>
-                                </div>
-                            ))}
-                        </div>
-                    </CardContent>
-                </Card>
-            </div>
+    const meals = ["breakfast", "lunch", "dinner"];
+
+    return (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {meals.map(mealType => {
+                const meal = foods.find(f => f.getMealType === mealType);
+                return (
+                    <Card key={mealType}>
+                        <CardTitle className="text-lg font-semibold p-3 border-b">
+                            {/*@ts-ignore */}
+                            {types[mealType]}
+                        </CardTitle>
+                        <CardContent className="p-4">
+                            {meal
+                                ? meal.food_menu
+                                    .split(/\/|-/)
+                                    .map((menu, i) => (
+                                        <div key={i} className="mb-1">
+                                            {menu.trim()}
+                                        </div>
+                                    ))
+                                : <span className="text-gray-400">없음</span>}
+                        </CardContent>
+                    </Card>
+                );
+            })}
         </div>
-    </>
+    );
 }
-
-export default DormitoryTodaytsx;

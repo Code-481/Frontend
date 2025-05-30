@@ -43,13 +43,13 @@ function Main_index() {
       <div className="grid place-content-center h-full w-[130vw] 2xl:w-[60vw]">
         {/* 텍스트 표시 */}
         <div className="text-center pb-10">
-          <p className="font-semibold text-2xl 2xl:text-3xl">
+          <p className="font-semibold text-3xl 2xl:text-4xl">
             Welcome to DEU Info Service
           </p>
           <p className="text-gray-500">원하는 서비스를 선택해주세요.</p>
         </div>
         {/**버튼 */}
-        <div className="grid gap-y-2 pb-5 text-sm 2xl:text-mg">
+        <div className="grid gap-y-2 pb-5 text-sm 2xl:text-xl">
           <Button onClick={navigateToDashboard} className="">한눈에 보기</Button>
           <Button className=""  onClick={() => navigate("/foodinfo")}>학식/기숙사 식단 보기</Button>
           <Button className=""  onClick={() => navigate("/busmap")}>버스맵 이동</Button>
@@ -73,7 +73,7 @@ function Main_index() {
             110-1번
           </Button> */}
         </div>
-        <div className="text-center text-[0.7rem] pt-5">
+        <div className="text-center text-[0.8rem] pt-5">
           <p>위 버스 번호를 터치하거나 클릭 하시면</p>
           <p>공공데이터 포털에서 데이터를 가지고 와서 보여드림니다.</p>
         </div>

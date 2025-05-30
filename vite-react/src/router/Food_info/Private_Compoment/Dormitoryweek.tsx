@@ -37,33 +37,27 @@ function Dormitoryweek() {
         <div className="text-gray-400 p-4">식단 정보가 없습니다.</div>
       ) : (
         Object.entries(groupedFoods).map(([date, meals]) => (
-          <Card key={date} className="min-w-[320px] flex-shrink-0 p-5">
-            <CardTitle className="text-2xl">{date}</CardTitle>
-            <CardContent>
-              <div className={activeTab == "happy" ? "flex gap-x-3" : ""}>
-                {meals
-                  .filter((meal) =>
-                    isHyomin
-                      ? !["lunch_s", "dinner_s"].includes(meal.getMealType)
-                      : true
-                  )
-                  .map((meal, idx) => (
-                    <div key={idx}>
-                      <span className="font-semibold">
-                        {types[meal.getMealType]}
-                      </span>
-                      <p className="list-disc pb-3">
-                        {meal.food_menu
-                          .split(" / ")
-                          .map((menu: string, i: number) => (
-                            <p key={i} style={{ whiteSpace: "pre-line" }}>
-                              {menu.replace(/-/g, "\n")}
-                            </p>
-                          ))}
-                      </p>
-                    </div>
-                  ))}
-              </div>
+          <Card key={date}>
+            <CardTitle className="p-3 border-b text-base font-bold">{date}</CardTitle>
+            <CardContent className="p-4 space-y-2">
+              {["breakfast", "lunch", "dinner"].map(mealType => {
+                const meal = meals.find(m => m.getMealType === mealType);
+                return (
+                  <div key={mealType}>
+                    <span className="font-semibold">{types[mealType]}: </span>
+                    {meal
+                      ? meal.food_menu
+                        .split(/\/|-/)
+                        .map((menu, i) => (
+                          <span key={i}>
+                            {menu.trim()}
+                            {i < meal.food_menu.split(/\/|-/).length - 1 && ", "}
+                          </span>
+                        ))
+                      : <span className="text-gray-400">없음</span>}
+                  </div>
+                );
+              })}
             </CardContent>
           </Card>
         ))
@@ -94,13 +88,13 @@ function Dormitoryweek() {
       <div>
         {activeTab === "hyomin" && (
           <>
-            <h2 className="mb-5 font-bold text-3xl">효민기숙사 주간 식단표</h2>
+            <h2 className="mb-5 font-bold text-3xl">주간 식단표</h2>
             {renderFoodCards(hyominFoods, true)}
           </>
         )}
         {activeTab === "happy" && (
           <>
-            <h2 className="mb-5 font-bold text-3xl">행복기숙사 주간 식단표</h2>
+            <h2 className="mb-5 font-bold text-3xl">주간 식단표</h2>
             {renderFoodCards(happyFoods, false)}
           </>
         )}

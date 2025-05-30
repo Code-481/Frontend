@@ -106,7 +106,6 @@ const json = [
         "stops": [
             {
                 "name": "동의대\n입구",
-                "eta": null,
                 "routeDirection": "right"
             },
             {

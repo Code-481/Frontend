@@ -118,7 +118,7 @@ function Busno() {
           </div>
         ) : null}
         {/* content */}
-        <div className={false ? "grid p-5" : "grid p-5  flex-grow w-full"}>
+        <div className={false ? "grid p-5" : "grid p-5  flex-grow w-full "}>
           <div>
             {/* item1 */}
             <div className="flex">
