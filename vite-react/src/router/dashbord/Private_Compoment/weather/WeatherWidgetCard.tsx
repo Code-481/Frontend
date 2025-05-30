@@ -21,7 +21,6 @@ interface WeatherWidgetCardProps {
 }
 
 export default function ResponsiveWeatherCard({
-  date,
   temperature,
   cloud,
   sky,

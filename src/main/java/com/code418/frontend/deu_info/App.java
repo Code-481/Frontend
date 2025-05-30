@@ -28,7 +28,6 @@ public class App extends Application {
 
         //설정 파일로
         YamlReader config = new YamlReader();
-        System.out.println(config.isFullscreen());
         try {
             // WebView 
             WebView webView = new WebView();
@@ -68,7 +67,7 @@ public class App extends Application {
                         server.start();
                         webView.getEngine().load("http://localhost:" + port);
                         Scene scene;
-                        if (config.fullscreen) {
+                        if (config.getFullscreen == "true") {
                             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                             scene = new Scene(webView, screenSize.getWidth(), screenSize.getHeight());
                             stage.setFullScreen(true);
