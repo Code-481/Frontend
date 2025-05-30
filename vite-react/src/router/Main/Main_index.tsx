@@ -51,8 +51,8 @@ function Main_index() {
         {/**버튼 */}
         <div className="grid gap-y-2 pb-5 text-sm 2xl:text-mg">
           <Button onClick={navigateToDashboard} className="">한눈에 보기</Button>
-          <Button className="">학식/기숙사 식단 보기</Button>
-          <Button className="">버스맵 이동</Button>
+          <Button className=""  onClick={() => navigate("/foodinfo")}>학식/기숙사 식단 보기</Button>
+          <Button className=""  onClick={() => navigate("/busmap")}>버스맵 이동</Button>
         </div>
         <div className="separator">DEU BUS INFO</div>
         <div className="grid justify-items-start pt-5 pl-10 gap-y-3">

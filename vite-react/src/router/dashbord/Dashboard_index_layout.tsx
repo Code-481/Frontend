@@ -109,6 +109,8 @@ function Dashboard_index_layout() {
 
   async function main() {
     const data = await All_Bus();
+    console.log(data);
+    
     setBusData(data);
   }
 
