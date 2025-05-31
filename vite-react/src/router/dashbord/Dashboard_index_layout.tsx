@@ -9,6 +9,7 @@ import Festival from "./Private_Compoment/Festival";
 
 import ResponsiveWeatherCard from "./Private_Compoment/weather/WeatherWidgetCard";
 import GetWeather from "@/Api/Weather/Weather_API";
+import { Fast_API } from "@/Api/event/Fastival";
 const dummyWeather = {
   temperature: 34,
   sunsetTime: "6:30 pm",
@@ -104,21 +105,28 @@ function Dashboard_index_layout() {
   //@ts-ignore
   const [weather, setWeather] = useState(dummyWeather);
   const [busData, setBusData] = useState(json);
+  const [fastival, setfastival] = useState([{
+    "id": null,
+    "name": "맥주를 사랑한다면 센텀맥주축제",
+    "startDate": "2025.05.29 ~ 06.08",
+    "endDate": null,
+    "address": "부산광역시 해운대구 수영강변대로 120",
+    "description": null
+  }]);
+
   //@ts-ignore
   const [loading, setLoading] = useState(false);
 
   async function main() {
     const data = await All_Bus();
-    console.log(data);
-    
     setBusData(data);
   }
 
-  async function Weahter() {
+  async function One_more_thing() {
     const weather = await GetWeather();
+    const festiaval = await Fast_API();
     setWeather(weather);
-    console.log(weather);
-    
+    setfastival(festiaval);
   }
 
   useEffect(() => {
@@ -142,9 +150,12 @@ function Dashboard_index_layout() {
 
     const intervalId = setInterval(runIfInTimeRange, 30000);
     //@ts-ignore
-    Weahter();
+    One_more_thing();
     return () => clearInterval(intervalId);
   }, []);
+
+  console.log(fastival);
+
   return (
     <>
       <Topnav />
@@ -176,6 +187,7 @@ function Dashboard_index_layout() {
             </div>
             <div className="flex">
               {/*  부산 행사  */}
+
               <div className="hidden xl:grid w-3/5 pr-10">
                 <div className="pt-3">
                   <p className="text-3xl font-bold">Busan is Festival!</p>
@@ -184,8 +196,8 @@ function Dashboard_index_layout() {
                   </p>
                   <br />
                 </div>
-                <div className="">
-                  <Festival />
+                <div className="  overflow-y-auto">
+                  <Festival festivalData={fastival} />
                 </div>
               </div>
               {/*  날씨 보여주는   */}

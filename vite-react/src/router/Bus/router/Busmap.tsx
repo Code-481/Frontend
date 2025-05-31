@@ -10,7 +10,9 @@ import All_Bus from "@/Api/Bus/Bus_arrival.ts";
 import six_bus from "@/assets/image/bus/6.png";
 import sixone_bus from "@/assets/image/bus/61.png";
 import nine_bus from "@/assets/image/bus/9.png";
-// 정류장+방향별 위치를 따로 지정
+import dayjs from "dayjs";
+
+// 정류장+방향별 위치를 따로 지정 (절대 ㅅ구정 금지)
 const stopPositionMap = {
     "동의대\n입구-right": { top: "87%", left: "52%" },
     "동의대\n입구-left": { top: "87%", left: "43%" },
@@ -21,7 +23,7 @@ const stopPositionMap = {
     "본관-right": { top: "40%", left: "79%" },
     "본관-left": { top: "40%", left: "72%" },
 };
-
+//시간외 불려오면 이 데이터가 대체됨
 const json = [
     {
         "title": "부산진구6",
@@ -150,6 +152,20 @@ function Busmap() {
     // 카드의 열림 여부와 현재 선택된 정류장+방향 정보
     const [cardOpen, setCardOpen] = useState(false);
     const [selected, setSelected] = useState(null);
+
+    //현재 시간 실시간 가져오기
+    const currentTime = dayjs().format("YYYY-MM-DD HH:mm:ss");
+    const [runningTime, setRunningTime] = useState(null);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setRunningTime(currentTime);
+        }, 1000);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, [currentTime]);
 
     async function main() {
         const data = await All_Bus();
@@ -324,6 +340,22 @@ function Busmap() {
                                     {cardContent}
                                 </div>
                             )}
+                            <div
+                                style={{
+                                    position: "fixed",
+                                    top: "86vh",
+                                    left: "79%",
+                                    zIndex: 1000,
+                                }}
+                            >
+                                {/* 하단 오른쪽에 시간 나태는 카드 배치 */}
+                                <Card className='p-5 min-w-[300px]'>
+                                    <CardTitle className='text-3xl'>현재 시각</CardTitle>
+                                    <CardContent>
+                                        <p className='text-4xl font-bold'>{runningTime}</p>
+                                    </CardContent>
+                                </Card>
+                            </div>
                         </div>
                     </div>
                 </div>
