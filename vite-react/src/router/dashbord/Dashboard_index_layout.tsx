@@ -105,14 +105,30 @@ function Dashboard_index_layout() {
   //@ts-ignore
   const [weather, setWeather] = useState(dummyWeather);
   const [busData, setBusData] = useState(json);
-  const [fastival, setfastival] = useState([{
-    "id": null,
-    "name": "맥주를 사랑한다면 센텀맥주축제",
-    "startDate": "2025.05.29 ~ 06.08",
-    "endDate": null,
-    "address": "부산광역시 해운대구 수영강변대로 120",
-    "description": null
-  }]);
+  const [fastival, setfastival] = useState([  {
+    "fields": {
+      "﻿콘텐츠ID": "71",
+      "콘텐츠명": "부산바다축제(한,영, 중간,중번,일)",
+      "구군": "수영구",
+      "위도": "35.151604",
+      "경도": "129.11713",
+      "장소": "부산바다축제, 다대포",
+      "제목": "부산하면 여름, 여름하면 부산바다축제!",
+      "부제목": "축제의 바다 속으로",
+      "주요장소": "다대포 해수욕장 일원 (2024년 다대포 일원화 개최)",
+      "주소": "",
+      "주소 기타": "",
+      "연락처": "051-713-5000",
+      "홈페이지": "http://www.bfo.or.kr/festival_sea/info/01.asp?MENUDIV=1",
+      "교통정보": "도시철도 1호선 다대포해수욕장역 2번 출구 도보 8분\n버스 11, 2, 3, 338, 96, 96-1, 1000",
+      "운영기간": "",
+      "이용요일 및 시간": "2024. 07. 26.(금) ~ 07. 28.(일)",
+      "이용요금": "",
+      "이미지URL": "https://www.visitbusan.net/uploadImgs/files/cntnts/20191213191711585_ttiel",
+      "썸네일이미지URL": "https://www.visitbusan.net/uploadImgs/files/cntnts/20191213191711585_thumbL",
+      "편의시설": "장애인 한바다축제 수어통역 / (사)부산장애인총연합회 051-863-0650"
+    }
+  },]);
 
   //@ts-ignore
   const [loading, setLoading] = useState(false);
@@ -123,11 +139,14 @@ function Dashboard_index_layout() {
   }
 
   async function One_more_thing() {
-    const weather = await GetWeather();
     const festiaval = await Fast_API();
-    setWeather(weather);
     setfastival(festiaval);
   }
+
+    async function Two_more_thing() {
+    const weather = await GetWeather();
+    setWeather(weather);
+    }
 
   useEffect(() => {
     function runIfInTimeRange() {
@@ -151,6 +170,7 @@ function Dashboard_index_layout() {
     const intervalId = setInterval(runIfInTimeRange, 30000);
     //@ts-ignore
     One_more_thing();
+    Two_more_thing();
     return () => clearInterval(intervalId);
   }, []);
 

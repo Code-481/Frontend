@@ -1,4 +1,4 @@
-import { BusFront, Info, Utensils, Map } from "lucide-react"
+import { BusFront, Info, Utensils, Map, GlobeLock } from "lucide-react";
 
 import {
   Sidebar,
@@ -9,7 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // Menu items.
 const Menuitems = [
@@ -22,8 +22,13 @@ const Menuitems = [
     title: "학식/기숙사 식단",
     url: "/foodinfo",
     icon: Utensils,
-  }
-]
+  },
+  {
+    title: "학사 일정 및 지역축제",
+    url: "/shcoolandfestival",
+    icon: GlobeLock,
+  },
+];
 
 const Bus_Info = [
   {
@@ -51,8 +56,7 @@ const Bus_Info = [
   //   url: "/Busno/88448ca",
   //   icon: BusFront,
   // }
-]
-
+];
 
 export function AppSidebar() {
   return (
@@ -61,9 +65,11 @@ export function AppSidebar() {
       <Sidebar className="pr-2">
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel className=" pb-2 text-xl font-bold">Menu</SidebarGroupLabel>
+            <SidebarGroupLabel className=" pb-2 text-xl font-bold">
+              Menu
+            </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="pl-5 gap-2.5">
+              <SidebarMenu className="pl-2 gap-2.5">
                 {Menuitems.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
@@ -77,9 +83,11 @@ export function AppSidebar() {
               </SidebarMenu>
             </SidebarGroupContent>
             <br />
-            <SidebarGroupLabel className="pb-2  text-xl font-bold">Bus Info</SidebarGroupLabel>
+            <SidebarGroupLabel className="pb-2  text-xl font-bold">
+              Bus Info
+            </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="pl-5  gap-2.5">
+              <SidebarMenu className="pl-2  gap-2.5">
                 {Bus_Info.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild>
@@ -96,5 +104,5 @@ export function AppSidebar() {
         </SidebarContent>
       </Sidebar>
     </>
-  )
+  );
 }

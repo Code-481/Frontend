@@ -4,6 +4,7 @@ import Dashboard_index_layout from "./router/dashbord/Dashboard_index_layout";
 import FoodIndex from "./router/Food_info/FoodIndex";
 import Busno from "./router/Bus/router/Busno";
 import Busmap from "./router/Bus/router/Busmap";
+import Schoolandfesta from "./router/shcoolandfestival/shcoolandfestival";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/foodinfo" element={<FoodIndex />} />
             <Route path="/busno/:busID" element={<Busno />} />
             <Route path="/busmap" element={<Busmap />} />
+              <Route path="/shcoolandfestival" element={<Schoolandfesta/>} />
           </Routes>
         </BrowserRouter>
       </div>

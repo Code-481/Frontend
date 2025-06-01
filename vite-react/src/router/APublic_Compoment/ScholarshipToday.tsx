@@ -105,7 +105,7 @@ function Food_Card() {
               <p className="text-gray-600 text-lg">대학 식당은 주말에 운영하지 않습니다.</p>
               <p className="text-gray-600 mt-2">평일(월~금)에 이용해 주세요.</p>
               <div className="mt-6 text-sm text-gray-500">
-                <p>운영시간: 평일 11:30 - 14:00, 17:00 - 19:00</p>
+                <p>운영시간: 평일 10:00 - 14:00</p>
               </div>
             </div>
           </div>
