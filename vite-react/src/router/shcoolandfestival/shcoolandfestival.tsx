@@ -19,6 +19,7 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
+import MonthlySchedulePage from "@/router/shcoolandfestival/Compoment/MonthlySchedulePage";
 
 function Schoolandfesta() {
   const [contentID, setcontentID] = useState(0);
@@ -102,78 +103,74 @@ function Schoolandfesta() {
           </div>
         ) : null}
         {/* content */}
-        <div className={false ? "flex p-5" : "flex p-5  flex-grow w-full "}>
-          <ResizablePanelGroup direction="horizontal">
-            <ResizablePanel>
-              {/* 부산 축제 상세 정보조회 */}
-              <div className="pr-5">
-                <p className="text-3xl font-bold">부산 축제 정보 조회</p>
-                <p className="pb-4">
-                  아래 리스트 버튼을 눌려서 조회할 축제를 선택해주세요
-                </p>
-                <Select onValueChange={handleValueChange}>
-                  <SelectTrigger className="w-[25vw]">
-                    <SelectValue placeholder="선택해주세요." />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>선택해주세요</SelectLabel>
-                      {listconetenID.map((data) => (
-                        <SelectItem
-                          value={data.conetentID}
-                          key={data.conetentID}
-                        >
-                          {data.title}
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-                {/* 선택된 데이터가 있을 경우 화면에 표시 */}
-                {!selectedContentId && (
-                  <div className="mt-6 p-4 border rounded-lg shadow-md bg-yellow-50 text-yellow-700">
-                    <p>선택한 데이터가 없거나 없습니다.</p>
-                  </div>
-                )}
-                {selectedContentId && (
-                  <div className="mt-6 p-4 border rounded-lg shadow-md bg-gray-50">
-                    <p className="text-xl font-bold">
-                      {selectedContentId["제목"]}
-                    </p>
-                    <div className="pt-4">
-                      <div className="flex justify-center">
-                        <img src={selectedContentId["썸네일이미지URL"]} alt="" />
-                      </div>
-                      <p className="font-bold">[이용요금]</p>
-                      {selectedContentId["이용요금"]}
-                      <p className="font-bold">[주요 장소]</p>
-                      {selectedContentId["주요장소"]}
-                      <p className="font-bold">[장소]</p>
-                      {selectedContentId["장소"]}
-                      <p className="font-bold">[주소]</p>
-                      {selectedContentId["주소"]}
-
-                      <hr />
-                      <p className="font-bold pb-2">[행사나용]</p>
-                      {selectedContentId["상세내용"]}
+        <div className={false ? "flex p-5 " : "flex p-5  flex-grow w-full "}>
+          <div className="w-7/10 max-h-[85vh]  overflow-y-auto">
+            {/* 부산 축제 상세 정보조회 */}
+            <div className="pr-5">
+              <p className="text-3xl font-bold">부산 축제 정보 조회</p>
+              <p className="pb-4">
+                아래 리스트 버튼을 눌려서 조회할 축제를 선택해주세요
+              </p>
+              <Select onValueChange={handleValueChange}>
+                <SelectTrigger className="w-[25vw]">
+                  <SelectValue placeholder="선택해주세요." />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>선택해주세요</SelectLabel>
+                    {listconetenID.map((data) => (
+                      <SelectItem value={data.conetentID} key={data.conetentID}>
+                        {data.title}
+                      </SelectItem>
+                    ))}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+              {/* 선택된 데이터가 있을 경우 화면에 표시 */}
+              {!selectedContentId && (
+                <div className="mt-6 p-4 border rounded-lg shadow-md bg-yellow-50 text-yellow-700">
+                  <p>선택한 데이터가 없거나 없습니다.</p>
+                </div>
+              )}
+              {selectedContentId && (
+                <div className="mt-6 p-4 border rounded-lg shadow-md bg-gray-50">
+                  <p className="text-xl font-bold">
+                    {selectedContentId["제목"]}
+                  </p>
+                  <div className="pt-4">
+                    <div className="flex justify-center">
+                      <img
+                        className="w-[40vw]"
+                        src={selectedContentId["이미지URL"]}
+                        alt=""
+                      />
                     </div>
+                    <p className="font-bold">[이용요금]</p>
+                    {selectedContentId["이용요금"]}
+                    <p className="font-bold">[주요 장소]</p>
+                    {selectedContentId["주요장소"]}
+                    <p className="font-bold">[장소]</p>
+                    {selectedContentId["장소"]}
+                    <p className="font-bold">[주소]</p>
+                    {selectedContentId["주소"]}
+
+                    <hr />
+                    <p className="font-bold pb-2">[행사나용]</p>
+                    {selectedContentId["상세내용"]}
                   </div>
-                )}
-              </div>
-            </ResizablePanel>
-            <ResizableHandle />
-            <ResizablePanel>
-              {/* 학교 학사일정 */}
-              <div className="p-10">
-                <p className="text-3xl font-bold">학사 일정 조회</p>
-                <p className="pb-4">
-                  이번달 학사정보를 확인해보세요!
-                </p>
-              <monthlySchedulePage/>
-              </div>
-            </ResizablePanel>
-          </ResizablePanelGroup>
-          <div></div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div>
+            {/* 학교 학사일정 */}
+            <div className="p-10">
+              <p className="text-3xl font-bold">학사 일정 조회</p>
+              <p className="pb-4">이번달 학사정보를 확인해보세요!</p>
+              <MonthlySchedulePage />
+            </div>
+          </div>
         </div>
       </div>
     </>
