@@ -141,8 +141,9 @@ function Schoolandfesta() {
                       {selectedContentId["제목"]}
                     </p>
                     <div className="pt-4">
-                      <img src={selectedContentId["썸네일이미지URL"]} alt="" />
-
+                      <div className="flex justify-center">
+                        <img src={selectedContentId["썸네일이미지URL"]} alt="" />
+                      </div>
                       <p className="font-bold">[이용요금]</p>
                       {selectedContentId["이용요금"]}
                       <p className="font-bold">[주요 장소]</p>
@@ -161,7 +162,16 @@ function Schoolandfesta() {
               </div>
             </ResizablePanel>
             <ResizableHandle />
-            <ResizablePanel> {/* 학교 학사일정 */}</ResizablePanel>
+            <ResizablePanel>
+              {/* 학교 학사일정 */}
+              <div className="p-10">
+                <p className="text-3xl font-bold">학사 일정 조회</p>
+                <p className="pb-4">
+                  이번달 학사정보를 확인해보세요!
+                </p>
+              <monthlySchedulePage/>
+              </div>
+            </ResizablePanel>
           </ResizablePanelGroup>
           <div></div>
         </div>
