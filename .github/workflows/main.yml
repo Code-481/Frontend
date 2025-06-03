@@ -30,7 +30,7 @@ jobs:
 
       - name: Install dependencies with npm
         working-directory: vite-react
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build Vite React App
         working-directory: vite-react
