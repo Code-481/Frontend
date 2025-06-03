@@ -9,6 +9,7 @@ import Festival from "./Private_Compoment/Festival";
 
 import ResponsiveWeatherCard from "./Private_Compoment/weather/WeatherWidgetCard";
 import GetWeather from "@/Api/Weather/Weather_API";
+import { Fast_API } from "@/Api/event/Fastival";
 const dummyWeather = {
   temperature: 34,
   sunsetTime: "6:30 pm",
@@ -104,22 +105,48 @@ function Dashboard_index_layout() {
   //@ts-ignore
   const [weather, setWeather] = useState(dummyWeather);
   const [busData, setBusData] = useState(json);
+  const [fastival, setfastival] = useState([  {
+    "fields": {
+      "﻿콘텐츠ID": "71",
+      "콘텐츠명": "부산바다축제(한,영, 중간,중번,일)",
+      "구군": "수영구",
+      "위도": "35.151604",
+      "경도": "129.11713",
+      "장소": "부산바다축제, 다대포",
+      "제목": "부산하면 여름, 여름하면 부산바다축제!",
+      "부제목": "축제의 바다 속으로",
+      "주요장소": "다대포 해수욕장 일원 (2024년 다대포 일원화 개최)",
+      "주소": "",
+      "주소 기타": "",
+      "연락처": "051-713-5000",
+      "홈페이지": "http://www.bfo.or.kr/festival_sea/info/01.asp?MENUDIV=1",
+      "교통정보": "도시철도 1호선 다대포해수욕장역 2번 출구 도보 8분\n버스 11, 2, 3, 338, 96, 96-1, 1000",
+      "운영기간": "",
+      "이용요일 및 시간": "2024. 07. 26.(금) ~ 07. 28.(일)",
+      "이용요금": "",
+      "이미지URL": "https://www.visitbusan.net/uploadImgs/files/cntnts/20191213191711585_ttiel",
+      "썸네일이미지URL": "https://www.visitbusan.net/uploadImgs/files/cntnts/20191213191711585_thumbL",
+      "편의시설": "장애인 한바다축제 수어통역 / (사)부산장애인총연합회 051-863-0650"
+    }
+  },]);
+
   //@ts-ignore
   const [loading, setLoading] = useState(false);
 
   async function main() {
     const data = await All_Bus();
-    console.log(data);
-    
     setBusData(data);
   }
 
-  async function Weahter() {
+  async function One_more_thing() {
+    const festiaval = await Fast_API();
+    setfastival(festiaval);
+  }
+
+    async function Two_more_thing() {
     const weather = await GetWeather();
     setWeather(weather);
-    console.log(weather);
-    
-  }
+    }
 
   useEffect(() => {
     function runIfInTimeRange() {
@@ -142,9 +169,13 @@ function Dashboard_index_layout() {
 
     const intervalId = setInterval(runIfInTimeRange, 30000);
     //@ts-ignore
-    Weahter();
+    One_more_thing();
+    Two_more_thing();
     return () => clearInterval(intervalId);
   }, []);
+
+  console.log(fastival);
+
   return (
     <>
       <Topnav />
@@ -158,7 +189,7 @@ function Dashboard_index_layout() {
           </div>
         ) : null}
         {/* content */}
-        <div className={false ? "grid  overflow-y-auto" : "grid flex-grow w-full overflow-y-auto"}>
+        <div className={false ? "grid  overflow-y-auto" : "grid flex-grow w-full h-screen overflow-y-auto"}>
           <div className=" p-5 bg-white">
             <p className="text-4xl font-bold">DEU 캠퍼스 인포</p>
             <p className="text-2xl text-gray-500">
@@ -176,6 +207,7 @@ function Dashboard_index_layout() {
             </div>
             <div className="flex">
               {/*  부산 행사  */}
+
               <div className="hidden xl:grid w-3/5 pr-10">
                 <div className="pt-3">
                   <p className="text-3xl font-bold">Busan is Festival!</p>
@@ -184,8 +216,8 @@ function Dashboard_index_layout() {
                   </p>
                   <br />
                 </div>
-                <div className="">
-                  <Festival />
+                <div className="  overflow-y-auto">
+                  <Festival festivalData={fastival} />
                 </div>
               </div>
               {/*  날씨 보여주는   */}

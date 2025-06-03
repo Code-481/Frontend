@@ -58,7 +58,7 @@ export default function BusRoutesCard({ routes }) {
                   >
                     {/* 회차 표시 (본관만) */}
                     {isReturnPoint && (
-                      <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
+                      <div className="absolute top-13 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold whitespace-nowrap">
                         회차
                       </div>
                     )}
@@ -74,24 +74,22 @@ export default function BusRoutesCard({ routes }) {
                     <div className="absolute -top-15 left-1/2 transform -translate-x-1/2 min-w-[90px]">
                       <div className="flex flex-col items-center">
                         <span
-                          className={`font-bold text-md ${
-                            stop.direction === "left"
-                              ? "text-orange-500"
-                              : stop.direction === "right"
+                          className={`font-bold text-md ${stop.direction === "left"
+                            ? "text-orange-500"
+                            : stop.direction === "right"
                               ? "text-blue-600"
                               : "text-red-600"
-                          }`}
+                            }`}
                         >
                           {stop.eta <= 2 ? "곧 도착" : `${stop.eta} 분`}
                         </span>
                         <Bus
-                          className={`${
-                            stop.direction === "left"
-                              ? "text-orange-500"
-                              : stop.direction === "right"
+                          className={`${stop.direction === "left"
+                            ? "text-orange-500"
+                            : stop.direction === "right"
                               ? "text-blue-600"
                               : "text-red-600"
-                          } w-7 h-7`}
+                            } w-7 h-7`}
                           style={stop.direction === "left" ? {} : {}}
                         />
                       </div>
@@ -101,7 +99,7 @@ export default function BusRoutesCard({ routes }) {
 
                 {/* 정류장 사이 연결선 */}
                 {i < processedStops.length - 1 && (
-                  <div className="relative mx-3 w-[80px] 2xl:w-[100px]">
+                  <div className="relative mx-3 w-[80px]  2xl:w-[100px]">
                     {/* 일직선 연결선 */}
                     <div
                       className="h-1 rounded"
@@ -124,7 +122,7 @@ export default function BusRoutesCard({ routes }) {
             ></div>
           </div>
         </div>
-
+        <br />
         {/* 운행 종료 시 메시지 표시 */}
         {route.message === "운행 종료" && (
           <div className="mt-4 p-3 bg-gray-100 rounded-lg text-center">

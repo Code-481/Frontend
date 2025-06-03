@@ -66,8 +66,8 @@ export default function BusRoutesCard({ routes }) {
     const processedStops = processRouteStops(route);
 
     return (
-      <div className="">
-        <table className="w-[16vw] border-collapse">
+      <div className="overflow-y-auto">
+        <table className="w-full min-w-[180px] border-collapse text-xs">
           <thead>
             <tr className="bg-gray-100">
               <th className="border p-2 text-left">정류장</th>
@@ -326,7 +326,7 @@ export default function BusRoutesCard({ routes }) {
       <h1 className="text-3xl font-bold mb-2">각 버스별 위치</h1>
 
       {/* 범례 */}
-      <div className="flex gap-6 mb-4">
+      <div className="flex gap-6 mb-4 ">
         <div className="flex items-center">
           <Bus
             className="text-orange-500 w-6 h-6 mr-1"
@@ -346,7 +346,7 @@ export default function BusRoutesCard({ routes }) {
 
       {isMobile ? (
         // 모바일 뷰 - 노선을 세로로 표시
-        <div className=" grid grid-cols-2 lg:grid-cols-3  grid-rows-2 gap-4">
+       <div className="h-[34vh] grid grid-cols-1 sm:grid-cols-2 gap-4">
           {routes.map((route, index) => (
             <div key={index} className="mb-6">
               <div className="text font-semibold pb-3">
