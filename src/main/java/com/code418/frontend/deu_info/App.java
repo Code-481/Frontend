@@ -15,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.scene.text.Font;
-import org.yaml.snakeyaml.Yaml;
 
 public class App extends Application {
 
@@ -23,13 +22,14 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException, Exception {
-        //다른 곳에서 깨질까봐 폰트를 집어 넣음
+        // 다른 곳에서 깨질까봐 폰트를 집어 넣음
         Font.loadFont(getClass().getResourceAsStream("/fonts/NanumGothic.ttf"), 14);
 
-        //설정 파일로
+        // 설정 파일로
         YamlReader config = new YamlReader();
+
         try {
-            // WebView 
+            // WebView
             WebView webView = new WebView();
             WebEngine engine = webView.getEngine();
 
@@ -40,22 +40,22 @@ public class App extends Application {
             // 파일 확인
             // 비동기 작업(쓰레드)
             new Thread(() -> {
-                // 파일 확인 
+                // 파일 확인
                 System.out.println("[로그] 데이터 최신화");
                 // Git
                 gitPull git = new gitPull();
                 git.start();
 
                 System.out.println("[로그] 데이터 최신화 작업종료");
-                //위 작업이 되면 실행
+                // 위 작업이 되면 실행
                 Platform.runLater(() -> {
                     System.out.println("[로그] 웹서버 실행");
                     // 포트 지정
                     int port = 8964;
                     httpservers server = new httpservers(resourceDir.getAbsolutePath(), port);
 
-                    // 자바스크립트 콘솔 메시지 Java 콘솔로 출력 
-                    // 개발 목적으로 만들어진 코드입니다. 
+                    // 자바스크립트 콘솔 메시지 Java 콘솔로 출력
+                    // 개발 목적으로 만들어진 코드입니다.
                     try {
                         engine.setOnAlert(event -> System.out.println("[ALERT] " + event.getData()));
                         engine.setOnError(event -> System.out.println("[ERROR] " + event.getMessage()));
@@ -67,16 +67,34 @@ public class App extends Application {
                         server.start();
                         webView.getEngine().load("http://localhost:" + port);
                         Scene scene;
-                        if (config.getFullscreen == "true") {
+
+                        // 설정 부분
+                        if (Boolean.TRUE.equals(config.getFullscreen())) {
                             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                            scene = new Scene(webView, screenSize.getWidth(), screenSize.getHeight());
-                            stage.setFullScreen(true);
+                            double width = screenSize.getWidth() * 0.95; // 가로 95%
+                            double height = screenSize.getHeight() * 0.80; // 세로 95%
+
+                            scene = new Scene(webView, width, height);
+                            stage.setScene(scene);
+
+                            // 화면 중앙 정렬
+                            stage.setX((screenSize.getWidth() - width) / 2);
+                            stage.setY((screenSize.getHeight() - height) / 1.5);
+                            stage.setFullScreen(false); // 전체 화면 false
+                            stage.show();
                         } else {
-                            scene = new Scene(webView, 1920, 1080);
+                            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                            double width = screenSize.getWidth() * 0.9;
+                            double height = screenSize.getHeight() * 0.9;
+                            scene = new Scene(webView, width, height);
+                            stage.setX((screenSize.getWidth() - width) / 2);
+                            stage.setY((screenSize.getHeight() - height) / 2);
                         }
+
                         stage.setScene(scene);
                         stage.setTitle("Code418 크로스 플랫폼");
                         stage.show();
+
                         // X자 아이콘을 클릭시 내부 서버 종료
                         stage.setOnCloseRequest(event -> server.stop());
                     } else {
