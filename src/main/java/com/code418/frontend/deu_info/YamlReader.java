@@ -12,8 +12,8 @@ import org.yaml.snakeyaml.Yaml;
  */
 class YamlReader {
 
-    public String fullscreen;
-    String getFullscreen;
+    public Boolean fullscreen;
+    Boolean getFullscreen;
 
     public YamlReader() throws Exception {
         Yaml yaml = new Yaml();
@@ -21,11 +21,11 @@ class YamlReader {
             if (in == null) throw new IllegalArgumentException("config.yaml not found");
             Map<String, Object> obj = yaml.load(in);
             Map<String, Object> display = (Map<String, Object>) obj.get("display");
-            this.fullscreen = (String) display.get("fullscreen");
+            this.fullscreen = (Boolean) display.get("fullscreen");
         }
     }
 
-    public String getFullscreen() {
+    public Boolean getFullscreen() {
         return fullscreen;
     }
 

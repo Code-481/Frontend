@@ -15,7 +15,6 @@ import java.io.File;
 import java.io.IOException;
 import javafx.application.Platform;
 import javafx.scene.text.Font;
-import org.yaml.snakeyaml.Yaml;
 
 public class App extends Application {
 
@@ -67,7 +66,7 @@ public class App extends Application {
                         server.start();
                         webView.getEngine().load("http://localhost:" + port);
                         Scene scene;
-                        if (config.getFullscreen == "true") {
+                        if (config.getFullscreen != null && config.getFullscreen) {
                             Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                             scene = new Scene(webView, screenSize.getWidth(), screenSize.getHeight());
                             stage.setFullScreen(true);
